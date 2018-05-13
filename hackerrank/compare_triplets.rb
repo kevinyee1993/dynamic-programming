@@ -13,7 +13,7 @@ def compareTriplets(a0, a1, a2, b0, b1, b2)
     end
   end
 
-  p [score_total_1, score_total_2]
+  [score_total_1, score_total_2]
 end
 
 compareTriplets(5, 6, 7, 3, 6, 10)
