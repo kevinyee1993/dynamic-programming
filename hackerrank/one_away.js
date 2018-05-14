@@ -1,6 +1,6 @@
 //solution 1
-//time: O(n)
-//space: O(n)
+//time: O(n) because have to loop through each character of each string once
+//space: O(n) because creating new data structures but not any nested data structures
 
 function oneAway(str1, str2) {
   if(str1.length > str2.length + 1 || str2.length > str1.length + 1) {
@@ -55,13 +55,6 @@ if(str1.length == str2.length) {
   }
 
   return true;
-
-
-
-
-
-
-
 }
 
 function countChars(str) {
