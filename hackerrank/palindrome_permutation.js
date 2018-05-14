@@ -1,3 +1,6 @@
+//time: O(n) because have to loop through each character of the str everytime
+//space: O(n) because creating new hash 
+
 function palindromePermutation(str) {
   let charCount = { };
 
