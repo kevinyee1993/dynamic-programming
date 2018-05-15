@@ -33,7 +33,12 @@ let num2 = new LinkedList(node4);
 num2.append(node5);
 num2.append(node6);
 
+//solution 1
+//time: O(n) because have to go through each list once so O(2n)
+//space: O(n) because creating new strings for each list so O(2n)
 
+//time complexity may be affected if parseInt runs slower than O(n) time
+//but assuming it doesn't, overall time complexity is O(n)
 function sumLists() {
 
   let addition1 = "";
