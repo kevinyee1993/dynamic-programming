@@ -1,3 +1,5 @@
+//DIDNT GET THIS DONE
+
 class ThreeInOne {
   constructor(arr1, arr2, arr3) {
     this.arr1 = arr1;
@@ -35,6 +37,31 @@ class ThreeInOne {
 
     console.log(this.megaArray);
   }
+
+  push(stackNum, item) {
+    let idx;
+    switch(stackNum) {
+      case 1:
+        idx = this.megaArray.length - 3;
+        break;
+      case 2:
+        idx = this.megaArray.length - 2;
+        break;
+      case 3:
+        idx = this.megaArray.length - 1;
+        break;
+    }
+
+    console.log(idx);
+
+    if(this.megaArray[idx]) {
+      idx += 3;
+      this.megaArray[idx] = item;
+    }
+
+    console.log(this.megaArray);
+  }
+
 }
 
 let a = [1,1,1];
@@ -43,3 +70,6 @@ let c = [3,3,3];
 
 let combine = new ThreeInOne(a,b,c);
 combine.combineArr(a,b,c);
+combine.push(1,1);
+combine.push(2,1);
+combine.push(3,1);
