@@ -37,7 +37,7 @@ linkedList1.append(node2);
 linkedList1.append(node3);
 
 linkedList2.append(node4);
-linkedList2.append(node3);
+// linkedList2.append(node3);
 linkedList2.append(node5);
 
 
