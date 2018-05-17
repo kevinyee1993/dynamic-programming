@@ -101,28 +101,28 @@ class LinkStack {
   }
 }
 
-let test = new LinkStack();
-let node1 = new Node(1);
-let node2 = new Node(2);
-let node3 = new Node(3);
-
-test.append(node3);
-test.append(node2);
-test.append(node1);
-
-console.log(test.min());
-
-test.pop();
-console.log(test.min());
-
-test.pop();
-console.log(test.min());
-
-test.pop();
-console.log(test.min());
-
-test.pop();
-console.log(test.head);
-test.pop();
-console.log(test.head);
+// let test = new LinkStack();
+// let node1 = new Node(1);
+// let node2 = new Node(2);
+// let node3 = new Node(3);
+//
+// test.append(node3);
+// test.append(node2);
+// test.append(node1);
+//
+// console.log(test.min());
+//
+// test.pop();
+// console.log(test.min());
+//
+// test.pop();
+// console.log(test.min());
+//
+// test.pop();
+// console.log(test.min());
+//
+// test.pop();
+// console.log(test.head);
+// test.pop();
+// console.log(test.head);
 // console.log(test.lowest.value);
