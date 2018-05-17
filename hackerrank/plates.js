@@ -18,7 +18,6 @@ class StackPlates {
     this.currentStackIdx = null;
   }
 
-  //push
   push(plate) {
     if(this.currentStackIdx === null) {
       let newStack = [];
@@ -35,15 +34,26 @@ class StackPlates {
     }
   }
 
-  //pop
   pop() {
     if(this.plateStore[this.currentStackIdx].length > 0) {
       this.plateStore[this.currentStackIdx].pop();
-    } else {
+    } else{
       this.currentStackIdx--;
-      this.plateStore[this.currentStackIdx].pop();
+
+      // while(this.plateStore[this.currentStackIdx - 1].length === 0) {
+      //   this.currentStackIdx--;
+      // }
+
+      // this.plateStore[this.currentStackIdx].pop();
+      this.pop();
     }
   }
+
+  popAt(idx) {
+    this.plateStore[idx].pop();
+  }
+
+
 }
 
 let test = new StackPlates(3);
@@ -63,11 +73,14 @@ test.pop();
 
 test.push(1);
 test.push(1);
+
+test.popAt(1);
+test.popAt(1);
+test.popAt(1);
+
 test.pop();
 test.pop();
-test.pop();
-test.pop();
-test.pop();
-test.pop();
+
+//need to fix this pop where the not current stack is empty before we get to it
 test.pop();
 console.log(test.plateStore);
