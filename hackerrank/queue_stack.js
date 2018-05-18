@@ -1,3 +1,11 @@
+//Time complexities
+//    push = O(1) because always just one step
+//    pop = O(n) because worst case you have to do the transfer elements step
+//    which has to go through the entire push stack transfer elements one by one
+//Space complexities
+//    Extra space: O(1) because not creating any new data structures
+//    Overall space: O(n) because have 2 arrays we created 
+
 class QueueStack {
   constructor() {
     this.pushStack = [];

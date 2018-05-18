@@ -1,5 +1,5 @@
 //TODO:  DIDNT GET THIS DONE
-
+//653 hints start
 class ThreeInOne {
   constructor(arr1, arr2, arr3) {
     this.arr1 = arr1;
