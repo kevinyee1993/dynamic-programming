@@ -73,10 +73,20 @@ def preorder_traversal(head)
   end
 end
 
-preorder_traversal(node4)
+# preorder_traversal(node4)
 
 
 # visits all the children first before getting to the head
 def postorder_traversal(head)
+  if(head.left)
+    postorder_traversal(head.left)
+  end
 
+  if(head.right)
+    postorder_traversal(head.right)
+  end
+
+  p head.value
 end
+
+postorder_traversal(node4)
