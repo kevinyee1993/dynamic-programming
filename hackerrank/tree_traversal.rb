@@ -26,6 +26,8 @@ node2.right = node3
 node6.left = node5
 node6.right = node7
 
+
+# visits nodes in order, for BST would just return ascending numbers
 def in_order_traversal(head)
 
   if(head.left)
@@ -40,4 +42,30 @@ def in_order_traversal(head)
 
 end
 
-in_order_traversal(node4)
+# in_order_traversal(node4)
+
+
+# visits current node first and then its children
+# similar to a BFS
+# seems like a queue would be useful here
+def preorder_traversal(head)
+  queue = []
+  queue << head
+
+  while(queue)
+    next_node = queue.shift()
+    p next_node.value
+
+    queue << next_node.left
+    queue << next_node.right
+  end
+
+end
+
+preorder_traversal(node4)
+
+
+# visits all the children first before getting to the head
+def postorder_traversal(head)
+
+end
