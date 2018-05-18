@@ -46,20 +46,31 @@ end
 
 
 # visits current node first and then its children
-# similar to a BFS
-# seems like a queue would be useful here
+#this right here is BFS not preorder traversal, had it right the first time
+# def preorder_traversal(head)
+#   queue = []
+#   queue << head
+#
+#   while(queue)
+#     next_node = queue.shift()
+#     p next_node.value
+#
+#     queue << next_node.left
+#     queue << next_node.right
+#   end
+#
+# end
+
 def preorder_traversal(head)
-  queue = []
-  queue << head
+  p head.value
 
-  while(queue)
-    next_node = queue.shift()
-    p next_node.value
-
-    queue << next_node.left
-    queue << next_node.right
+  if(head.left)
+    preorder_traversal(head.left)
   end
 
+  if(head.right)
+    preorder_traversal(head.right)
+  end
 end
 
 preorder_traversal(node4)
