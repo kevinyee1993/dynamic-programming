@@ -90,14 +90,13 @@ end
 test = MinHeap.new()
 
 test.insert(4)
-test.insert(3)
-test.insert(6)
+test.insert(50)
+test.insert(7)
+test.insert(55)
+test.insert(90)
+test.insert(87)
 test.insert(2)
-test.insert(1)
 
 
-p test.extract
-p test.heap
-#
 # p test.extract
 # p test.heap
