@@ -1,3 +1,5 @@
+#page 109
+
 #take mid of array and set that as root
 #split up the left and right array and recursively call this on them
 #keep going until no more children
@@ -12,7 +14,12 @@ class Node
 
 end
 
-
+# time complexity = O(log(n)) because splitting up the array and doing operations
+# space complexity = O(n) ???
+# whatever the space complexity actually is, there is a way to optimize it
+# by passing in indices and the original array rather than passing in
+# new left and right subarrays.  The indices will just reference where
+# on the original array you wanna look at but will still get the job done 
 def create_minimal_tree(arr)
   return arr[0] if arr.length <= 1
 
