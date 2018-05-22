@@ -66,14 +66,43 @@ def no_children(node)
   true
 end
 
-arr = []
-in_order_traversal(b, arr)
-p arr
-target_node = a
+# arr = []
+# in_order_traversal(b, arr)
+# p arr
+# target_node = a
+#
+#
+# arr.each_with_index do |el, idx|
+#   if(el == target_node.value)
+#     p arr[idx + 1]
+#   end
+# end
 
 
-arr.each_with_index do |el, idx|
-  if(el == target_node.value)
-    p arr[idx + 1]
+
+# solution 2 - STILL NEEDS WORK NOT COMPLETELY SOLVED YET
+# space complexity: worst case O(n) because creating a new variable small_val for each
+#   recursive call of smallest_value. Could have situation where tree is single line with everything on the left
+# time complexity: O(n) because of worst case scenario.
+def smallest_value(node)
+  small_val = node
+
+  while(node.left)
+    small_val = node.left
   end
+
+  return small_val
 end
+
+def successor(node)
+  if(!node.right && node.parent)
+    return successor(node.parent)
+  elsif(!node.right && !node.parent)
+    return node
+  end
+
+  return smallest_value(node.right)
+end
+
+
+p successor(b).value
