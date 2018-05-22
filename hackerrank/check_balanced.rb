@@ -1,8 +1,12 @@
-# time complexity:
+# solution 1 time complexity:
 #  best case: O(log(n))
 #  worst case: O(n)
+# actually O(nlog(n)) because each node is "touched" once per node above it
+# can optimize this by checking for balance as we are doing the depth check
+# the way the book implements it, the get_depth checks for left and right at the same time
 
-# space complexity: O(1)
+
+# space complexity: O(h) where h is the height of the tree, probably because creating new variables each step of the way
 
 class Node
   attr_accessor :left, :right, :value
@@ -14,6 +18,8 @@ class Node
   end
 end
 
+# Solution 1
+# ======================================================================
 def is_balanced?(root)
   left = get_depth(root.left)
   right = get_depth(root.right)
@@ -49,6 +55,12 @@ def has_no_children(root)
   return true
 end
 
+# ======================================================================
+
+# Solution 2
+# ======================================================================
+
+# ======================================================================
 a = Node.new(1)
 b = Node.new(2)
 c = Node.new(2)
@@ -60,4 +72,5 @@ b.left = c
 a.right = d
 
 
-p is_balanced?(a)
+
+#pg 109
