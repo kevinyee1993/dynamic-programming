@@ -2,4 +2,4 @@ pg 90: 1.8, 1.9
 pg 98: 3.1
 
 //BASICALLY REVISIT ALL TREES/GRAPH QUESTIONS
-pg 109: 4.1, 4.3, 4.5, 4.6 (finished but should revisit)
+pg 109: 4.1, 4.3, 4.5, 4.6, 4.7
