@@ -33,7 +33,7 @@ a.append_left(c)
 b.append_right(d)
 b.append_left(e)
 
-
+# Solution 1 where nodes have links to parents
 # time complexity: O(n) because worst case will have you looking at each node at least once
 # space complexity: O(1) because only creating constant variables regardless of input
 def common_ancestor(node1, node2)
