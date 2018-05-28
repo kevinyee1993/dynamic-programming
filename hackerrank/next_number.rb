@@ -1,4 +1,5 @@
 # brute force solution
+# VERY inefficient, definitely need to optimize it at least for time complexity
 def count_binary_ones(num)
   num_ones = 0
   bin_rep = convert_num_to_binary(num)
@@ -9,7 +10,7 @@ def count_binary_ones(num)
     end
   end
 
-  bin_rep
+  num_ones
 end
 
 def next_number(num)
@@ -72,4 +73,6 @@ def get_largest_bit(num)
 end
 
 # p get_largest_bit(5)
-p convert_num_to_binary(10)
+# p convert_num_to_binary(10)
+# p count_binary_ones(10)
+p next_number(2)
