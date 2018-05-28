@@ -75,4 +75,4 @@ end
 # p get_largest_bit(5)
 # p convert_num_to_binary(10)
 # p count_binary_ones(10)
-p next_number(2)
+p next_number(3)
