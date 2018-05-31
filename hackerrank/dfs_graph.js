@@ -21,3 +21,17 @@ note: only print a node if it is marked as unvisited
 
 
 // bfs uses queue
+/*
+visit node
+print and mark as visited
+add all children to queue
+mark each children as visited and print them
+
+after done with root node, move to the first element on the queue
+dequeue whatever element you're looking at
+check all of its children
+visit, mark as visited, and print
+
+
+
+*/
