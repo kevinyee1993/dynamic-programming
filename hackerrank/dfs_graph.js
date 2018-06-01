@@ -1,3 +1,11 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.children = [];
+    this.visited = false;
+  }
+}
+
 // dfs in a graph uses a stack
 /*
 when you visit a node, put one of its children into the stack
@@ -19,6 +27,36 @@ continue until no more unvisited children and then just keep popping stuff off t
 note: only print a node if it is marked as unvisited
 */
 
+function graphDFS(node) {
+  let stackaroony = [];
+  stackaroony.push(node);
+
+//the way im solving right now takes long ass time, need to optimize after
+let currentNode = stackaroony[0];
+
+  while(stackaroony.length > 0) {
+    
+    if(!currentNode.hasUnvisitedChildrenLikeDrake) {
+      currentNode = node.children.shift();
+    }
+
+    stackaroony.push(currentNode);
+
+    currentNode.visited = true;
+    console.log(currentNode);
+  }
+}
+
+
+function hasUnvisitedChildrenLikeDrake(node) {
+  node.children.forEach(function(element) {
+    if(element.visited) {
+      return true;
+    }
+  });
+
+  return false;
+}
 
 // bfs uses queue
 /*
@@ -31,7 +69,4 @@ after done with root node, move to the first element on the queue
 dequeue whatever element you're looking at
 check all of its children
 visit, mark as visited, and print
-
-
-
 */
