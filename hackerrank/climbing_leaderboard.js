@@ -45,7 +45,7 @@ function climbingLeaderboard(scores, alice) {
 
     scores.forEach(score => {
         combinedScores.push(parseInt(score));
-    })
+    });
 
     alice.forEach(score => {
         combinedScores.push(parseInt(score));
