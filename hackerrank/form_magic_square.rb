@@ -1,3 +1,8 @@
+# time_complexity: O(1) in this case because we know for sure it's going to be
+# a 3 x 3 matrix.  Would be quadratic if we wanted to scale though
+
+# space complexity: O(1) for the same reason
+
 def form_magic_square(input_matrix)
   magic_square = [[4,9,2],
                   [3,5,7],
@@ -47,8 +52,8 @@ def rotate_matrix(matrix)
   rotated
 end
 
-a = [[4,8,2],
-    [4,5,7],
-    [6,1,6]]
+a = [[4,4,7],
+    [3,1,5],
+    [1,7,9]]
 
 p form_magic_square(a)
