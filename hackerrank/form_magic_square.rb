@@ -1,3 +1,18 @@
+
+def find_cost(magic_square, input_matrix)
+  total_cost = 0
+
+  for i in 0...magic_square[0].length
+    for j in 0...magic_square.length
+      cost = (magic_square[i][j] - input_matrix[i,j]).abs
+      total_cost += cost
+    end
+  end
+
+  total_cost
+end
+
+
 def rotate_matrix(matrix)
   rotated = Array.new(3)
 
