@@ -1,3 +1,12 @@
+def nth_ugly_number(n)
+  ugly_numbers = [1]
+
+  return 1 if n == 0
+
+
+
+end
+
 def is_prime?(num)
   for i in 2...num
     return false if num % i == 0
@@ -6,8 +15,12 @@ def is_prime?(num)
   true
 end
 
-p is_prime?(2)
-p is_prime?(3)
-p is_prime?(4)
-p is_prime?(5)
-p is_prime?(6)
+def div235(num)
+  num % 2 == 0 ||
+  num % 3 == 0 ||
+  num % 5 == 0
+end
+
+p div235(2)
+p div235(3)
+p div235(5)
