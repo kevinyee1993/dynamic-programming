@@ -1,7 +1,9 @@
 def nth_ugly_number(n)
-  ugly_numbers = [1]
+  ugly_numbers = {1: true, 2: true, 3: true, 4: true, 5: true}
 
   return 1 if n == 0
+
+  if()
 
 
 
