@@ -12,3 +12,9 @@ end
 
 # Have a variable keeping track of the longest palindrome so far
 # Continuously update it until you finish looping through everything
+
+
+# possible O(n) solution
+# still have two pointers
+# start pointer at index 0, end pointer at index arr.length - 1
+# check to see if the two pointers match
