@@ -19,3 +19,6 @@ end
 
 # this approach will be O(n^2) time and space because have to create
 # the 2d array as well as place each element in given a starting value of n
+
+# also might need to pass in a reference to the array being filled as well
+# won't take any extra memory because it's just a reference
