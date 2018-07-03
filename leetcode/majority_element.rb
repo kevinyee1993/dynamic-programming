@@ -7,6 +7,7 @@
 def majority_element(nums)
 
   counter = {}
+  big_boys = []
 
   nums.each do |el|
     unless counter[el]
@@ -15,7 +16,11 @@ def majority_element(nums)
       counter[el] += 1
      end
 
-     return el if counter[el] > nums.length/2
+     big_boys << el if counter[el] > nums.length/3
   end
 
+  big_boys.uniq
+
 end
+
+p majority_element([1,1,1,3,3,2,2,2])
