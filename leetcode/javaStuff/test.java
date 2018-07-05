@@ -5,7 +5,7 @@ class test {
   }
 
   public static boolean isHappy(int n) {
-    if(n % 10 == 1) {
+    if(n == 1) {
       return true;
     } else if(Math.pow(n, 2) < 10) {
       return false;
