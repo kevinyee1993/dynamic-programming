@@ -1,6 +1,7 @@
 class test {
 
   public static void main(String args[]) {
+
     // tuna2na butts = new tuna2na();
     // butts.simpleMessage("inheritance test");
   }
@@ -31,3 +32,26 @@ class test {
     return sum;
   }
 }
+
+
+/*
+
+Reverse singly linked list
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode previousNode = null;
+        ListNode currentNode = head;
+
+        while(currentNode != null) {
+            ListNode nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        return previousNode;
+    }
+
+
+}
+*/
