@@ -1,7 +1,8 @@
+// O(n) time
+// O(1) space
+
 function lemonadeChange(bills) {
   let change = { 5:0, 10:0 };
-
-
 
   for(let i = 0; i < bills.length; i++) {
 
