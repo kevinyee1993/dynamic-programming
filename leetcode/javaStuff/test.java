@@ -1,7 +1,8 @@
 class test {
 
   public static void main(String args[]) {
-    System.out.println(isHappy(4));
+    tuna2na butts = new tuna2na();
+    butts.simpleMessage("inheritance test");
   }
 
   public static boolean isHappy(int n) {
