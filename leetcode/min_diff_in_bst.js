@@ -46,7 +46,7 @@ let e = new TreeNode(7);
 a.left = b;
 a.right = c;
 // b.left = d;
-// c.right = e;
+// c.right = e;m
 
 // console.log(inOrderTraversal(a));
 console.log(minDiffInBST(a));
