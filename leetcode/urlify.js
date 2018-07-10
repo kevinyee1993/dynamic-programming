@@ -4,9 +4,15 @@
 
 function urlify(str) {
   // remove all the trailing spaces from string
+  removeTrailingSpaces(str);
+
   // replace all spaces with %20
+  replaceCharacters(str, ' ', '%20');
+
+  return str;
 }
 
+// O(n) time, O(1) space
 function removeTrailingSpaces(str) {
   while(str[str.length - 1] === ' ') {
     str.pop();
@@ -15,5 +21,19 @@ function removeTrailingSpaces(str) {
   return str;
 }
 
-let a = ['a', 'b', 'c', ' ', ' ', 'd'];
-console.log(removeTrailingSpaces(a));
+// O(n) time, O(1) space
+function replaceCharacters(str, target, replacement) {
+  for(let i = 0; i < str.length; i++) {
+    if(str[i] === target) {
+      str[i] = replacement;
+    }
+  }
+
+  return str;
+}
+
+
+
+let a = ['a', 'b', 'c', ' ', ' ', 'd', ' '];
+// console.log(removeTrailingSpaces(a));
+console.log(urlify(a));
