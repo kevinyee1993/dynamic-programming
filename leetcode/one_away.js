@@ -1,3 +1,5 @@
+// O(n) time and space
+
 function oneAway(str1, str2) {
   if(str1.length > str2.length + 1 || str2.length > str1.length + 1) {
     return false;
@@ -27,6 +29,9 @@ function charCounter(str) {
   return counter;
 }
 
+// doesn't work exactly like you'd expect because it's just counting the
+// count of each character.  Will fail if you encounter something like
+// one string and a reversed string.
 function compareCounts(counter1, counter2) {
   let numDifferences = 0;
 
@@ -40,4 +45,4 @@ function compareCounts(counter1, counter2) {
   return (numDifferences <= 1);
 }
 
-console.log(oneAway("farts", "badts"));
+console.log(oneAway("fart", "traf"));
