@@ -1,6 +1,14 @@
-var flipAndInvertImage = function(A) {
+// right now O(n^2) time because nested loops
+// O(1) space because changing the original array without creating new
 
-};
+var flipAndInvertImage = function(A) {
+  for(let i = 0; i < A.length; i++) {
+    flipImage(A[i]);
+    invertImage(A[i]);
+  }
+
+  return A;
+ };
 
 function flipImage(arr) {
   for(let i = 0; i < arr.length / 2; i++) {
@@ -24,5 +32,5 @@ function invertImage(arr) {
   return arr;
 }
 
-const a = [0,0,0,1,1,1,0,1];
-console.log(invertImage(a));
+const a = [[0,0,0], [1,1,1], [0,0,1]];
+console.log(flipAndInvertImage(a));
