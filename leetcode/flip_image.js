@@ -12,5 +12,17 @@ function flipImage(arr) {
   return arr;
 }
 
-const a = [0,1,2,3,4];
-console.log(flipImage(a));
+function invertImage(arr) {
+  for(let i = 0; i < arr.length; i++) {
+    if(arr[i] === 0) {
+      arr[i] = 1;
+    } else {
+      arr[i] = 0;
+    }
+  }
+
+  return arr;
+}
+
+const a = [0,0,0,1,1,1,0,1];
+console.log(invertImage(a));
