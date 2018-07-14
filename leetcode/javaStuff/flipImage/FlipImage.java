@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class FlipImage {
+
+  //O(n^2) time and O(1) space
   public static void main(String[] args) {
     int[][] arr = {{0,0,1}, {1,2,3}};
 
@@ -12,12 +14,9 @@ public class FlipImage {
       System.out.println(arr[i][1]);
       System.out.println(arr[i][2]);
     }
-
-    // System.out.println(arr[0][2]);
-    // System.out.println(Arrays.toString(arr));
-    // return arr;
   }
 
+  // O(n) time and O(1) space
   public static void flipImage(int[] arr) {
     for(int i = 0; i < arr.length / 2; i++) {
       int temp  = arr[i];
@@ -26,6 +25,8 @@ public class FlipImage {
     }
   }
 
+
+  // O(n) time and O(1) space
   public static void invertImage(int[] arr) {
     for(int i = 0; i < arr.length; i++) {
       if(arr[i] == 0) {
