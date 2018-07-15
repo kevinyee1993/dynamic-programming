@@ -1,4 +1,7 @@
-// time and space complexity of recursive function?
+// time = O(n) where n is the number of nodes that needs to be traversed
+
+// space = O(n) where the depth of the recursion tree can go up to n in the
+// case of a skewed tree. Average case would be O(log(n)) because binary tree yadadamean
 
 function TreeNode(val) {
    this.val = val;
