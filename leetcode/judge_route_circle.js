@@ -1,5 +1,6 @@
 var judgeCircle = function(moves) {
-
+  let moveCounter = countMoves(moves);
+  return compareMoves(moveCounter);
 };
 
 function countMoves(moves) {
@@ -17,4 +18,8 @@ function countMoves(moves) {
   return moveCount;
 }
 
-console.log(countMoves(['up','down','left','right','left']));
+function compareMoves(moveCounter) {
+  return moveCounter['U'] === moveCounter['D'] && moveCounter['L'] === moveCounter['R'];
+}
+
+console.log(judgeCircle('LL'));
