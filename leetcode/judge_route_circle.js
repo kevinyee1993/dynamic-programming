@@ -1,3 +1,6 @@
+// time complexity: O(n)
+// space complexity: O(n)
+
 var judgeCircle = function(moves) {
   let moveCounter = countMoves(moves);
   return compareMoves(moveCounter);
