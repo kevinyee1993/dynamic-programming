@@ -19,7 +19,6 @@ var findWords = function(words) {
 
   }
 
-  // console.log(combinedRowsHash);
   return answers;
 };
 
