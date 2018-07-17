@@ -6,14 +6,21 @@ var findWords = function(words) {
   const row2 = createKeyboardRowHash('asdfghjkl',2);
   const row3 = createKeyboardRowHash('zxcvbnm',3);
 
+
   const combinedRowsHash = Object.assign(row1, row2, row3);
   let answers = [];
 
-  // for(let i = 0; i < words; i++) {
-  //
-  // }
+  for(let i = 0; i < words.length; i++) {
+    let word = words[i];
 
-  console.log(combinedRowsHash);
+    if(checkWord(word, combinedRowsHash)) {
+      answers.push(word);
+    }
+
+  }
+
+  // console.log(combinedRowsHash);
+  return answers;
 };
 
 
@@ -28,25 +35,26 @@ function createKeyboardRowHash(letters, rowNumber) {
   return keyboardRow;
 }
 
-// function checkWord(word, combinedRowsHash) {
-//   let previousRow = undefined;
-//   for(let i = 0; i < word.length; i++) {
-//
-//     let currentRow = combinedRowsHash[word[i]];
-//
-//     if(previousRow) {
-//       if(previousRow !== currentRow) {
-//         return false;
-//       }
-//
-//       previousRow = currentRow;
-//
-//     } else {
-//       previousRow = currentRow;
-//     }
-//   }
-//
-//   return true;
-// }
+function checkWord(word, combinedRowsHash) {
+  let previousRow = undefined;
+  let lowCaseWord = word.toLowerCase();
+  for(let i = 0; i < word.length; i++) {
 
-findWords();
+    let currentRow = combinedRowsHash[lowCaseWord[i]];
+
+    if(previousRow) {
+      if(previousRow !== currentRow) {
+        return false;
+      }
+
+      previousRow = currentRow;
+
+    } else {
+      previousRow = currentRow;
+    }
+  }
+
+  return true;
+}
+
+console.log(findWords(['Hello', 'Alaska', "Dad", "Peace"]));
