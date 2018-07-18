@@ -6,22 +6,14 @@ public class ReverseWords {
     String[] wordsArr = new String[words.length()];
     wordsArr = words.split(" ");
 
-    // System.out.println(reverseSingleWord(butt));
-    // System.out.println(reverseWords(words));
-
-    // words = reverseWords(wordsArr);
     reverseWords(wordsArr);
 
-    for(int i = 0; i < wordsArr.length; i++) {
-      System.out.println(wordsArr[i]);
-    }
+    System.out.println(String.join(" ", wordsArr));
   }
 
   public static String[] reverseWords(String[] words) {
-  // public static void reverseWords(String[] words) {
     for(int i = 0; i < words.length; i++) {
       words[i] = reverseSingleWord(words[i]);
-      // System.out.println(words[i]);
     }
 
     return words;
@@ -31,10 +23,21 @@ public class ReverseWords {
     String reversedString = "";
 
     for(int i = 0; i < word.length(); i++ ) {
-      // reversedString += word[word.length() - 1 - i];
       reversedString += word.charAt(word.length() - 1 - i);
     }
 
     return reversedString;
   }
+
+
+
+  // public static String[] flipString(String[] words) {
+  //   for(int i = 0; i < words.length / 2; i++) {
+  //     String temp = words[i];
+  //     words[i] = words[words.length - 1 - i];
+  //     words[words.length - 1 - i] = temp;
+  //   }
+  //
+  //   return words;
+  // }
 }
