@@ -1,8 +1,25 @@
 public class ReverseWords {
   public static void main(String[] args) {
     String butt = "butt";
+    String[] words = {"fart", "part", "bart"};
 
-    System.out.println(reverseSingleWord(butt));
+    // System.out.println(reverseSingleWord(butt));
+    // System.out.println(reverseWords(words));
+
+    words = reverseWords(words);
+    for(int i = 0; i < words.length; i++) {
+      System.out.println(words[i]);
+    }
+  }
+
+  public static String[] reverseWords(String[] words) {
+  // public static void reverseWords(String[] words) {
+    for(int i = 0; i < words.length; i++) {
+      words[i] = reverseSingleWord(words[i]);
+      // System.out.println(words[i]);
+    }
+
+    return words;
   }
 
   public static String reverseSingleWord(String word) {
