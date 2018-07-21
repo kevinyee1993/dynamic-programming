@@ -8,8 +8,19 @@ var findComplement = function(num) {
   // leading 0 with all 1s | with the other numbers should give the non negative complement
 
 
-  
+
 };
+
+function findBiggestBit(num) {
+  let currentBit = 1;
+
+  while(currentBit < num) {
+    currentBit *= 2;
+  }
+
+  return currentBit;
+}
+
 
 
 
@@ -18,29 +29,32 @@ var findComplement = function(num) {
 // very biggest bit (which turned into a 1) into a 0.
 
 // // don't start at 1, should start at max if you wanna take this approach
-// function turnNumberToBit(num) {
-//   let bit = "";
-//   let currentBit = 1;
-//
-//   if(num === 0) {
-//     return "0";
-//   }
-//
-//   while(num > 0) {
-//     console.log(num);
-//     if(num >= currentBit) {
-//       num -= currentBit;
-//       bit = "1" + bit;
-//     } else {
-//       bit = "0" + bit;
-//     }
-//
-//     currentBit *= 2;
-//   }
-//
-//   return bit;
-// }
-//
-// function turnBitToNumber(bit) {
-//
-// }
+function turnNumberToBit(num, bigBit) {
+  let bit = "";
+  let currentBit = bigBit;
+
+  if(num === 0) {
+    return "1";
+  }
+
+  while(currentBit > 0) {
+    if(num >= currentBit) {
+      num -= currentBit;
+      // bit = "0" + bit;
+      bit += "0";
+    } else {
+      // bit = "1" + bit;
+      bit += "1";
+    }
+
+    currentBit = Math.floor(currentBit / 2);
+  }
+
+  return bit;
+}
+
+console.log(turnNumberToBit(5, 8));
+
+function turnBitToNumber(bit) {
+
+}
