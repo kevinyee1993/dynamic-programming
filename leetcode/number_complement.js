@@ -1,13 +1,8 @@
 var findComplement = function(num) {
+  let biggestBit = findBiggestBit(num);
+  const answer = turnNumberToBit(num, biggestBit);
 
-  // turn num to its complement
-  let numToComplement = ~num;
-
-
-  // turn leftmost 1 into a 0
-  // leading 0 with all 1s | with the other numbers should give the non negative complement
-
-
+  return parseInt(answer);
 
 };
 
@@ -18,17 +13,13 @@ function findBiggestBit(num) {
     currentBit *= 2;
   }
 
-  return currentBit;
+  if(currentBit === num) {
+    return currentBit;
+  } else {
+    return currentBit / 2;
+  }
 }
 
-
-
-
-
-// oh can just take a number complement with ~num and then turn the
-// very biggest bit (which turned into a 1) into a 0.
-
-// // don't start at 1, should start at max if you wanna take this approach
 function turnNumberToBit(num, bigBit) {
   let bit = "";
   let currentBit = bigBit;
@@ -40,10 +31,8 @@ function turnNumberToBit(num, bigBit) {
   while(currentBit > 0) {
     if(num >= currentBit) {
       num -= currentBit;
-      // bit = "0" + bit;
       bit += "0";
     } else {
-      // bit = "1" + bit;
       bit += "1";
     }
 
@@ -53,8 +42,4 @@ function turnNumberToBit(num, bigBit) {
   return bit;
 }
 
-console.log(turnNumberToBit(5, 8));
-
-function turnBitToNumber(bit) {
-
-}
+console.log(findComplement(3));
