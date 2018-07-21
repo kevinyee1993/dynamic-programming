@@ -1,8 +1,8 @@
 var findComplement = function(num) {
   let biggestBit = findBiggestBit(num);
-  const answer = turnNumberToBit(num, biggestBit);
+  let answer = turnNumberToBit(num, biggestBit);
 
-  return parseInt(answer);
+  return turnBitToNumber(answer);
 
 };
 
@@ -42,4 +42,22 @@ function turnNumberToBit(num, bigBit) {
   return bit;
 }
 
-console.log(findComplement(3));
+function turnBitToNumber(bit) {
+  let currentBit = 1;
+  let sum = 0;
+
+  for(let i = 0; i < bit.length; i++) {
+    let leastSigBit = bit[bit.length - 1 - i];
+
+    if(leastSigBit === "1") {
+      sum += currentBit;
+    }
+
+    currentBit *= 2;
+  }
+
+  return sum;
+}
+
+// console.log(turnBitToNumber("110"));
+console.log(findComplement(5));
