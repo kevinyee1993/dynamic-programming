@@ -22,7 +22,7 @@ var shortestToChar = function(S, C) {
       previousC++;
     }
 
-    if(previousC !== null && previousC < nextC - i) {
+    if(!nextC || previousC !== null && previousC < nextC - i) {
       answer.push(previousC);
     } else {
       answer.push(nextC - i);
@@ -45,4 +45,4 @@ function findNextC(currentIndex, S, C) {
   }
 }
 
-console.log(shortestToChar("loveleetcode", 'e'));
+console.log(shortestToChar("aaba", 'b'));
