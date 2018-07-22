@@ -10,13 +10,20 @@ class RemoveDups {
     head.appendToTail(6);
     head.appendToTail(3);
 
-    head.printNodes();
+    System.out.println(removeDups(head).length);
+
+  }
+
+  public static int[] removeDups(Node head) {
+    int[] answer = new int[head.length];
+    return answer;
   }
 }
 
 class Node {
   Node next = null;
   int value;
+  int length = 1;
 
   public Node(int value) {
     this.value = value;
@@ -31,6 +38,7 @@ class Node {
     }
 
     n.next = end;
+    this.length++;
   }
 
   public void printNodes() {
