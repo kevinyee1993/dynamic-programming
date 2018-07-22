@@ -1,3 +1,5 @@
+// O(n) time and space
+
 import java.util.*;
 
 class RemoveDups {
@@ -10,7 +12,7 @@ class RemoveDups {
     head.appendToTail(4);
     head.appendToTail(5);
     head.appendToTail(6);
-    head.appendToTail(3);
+    // head.appendToTail(3);
 
 
     // hashmap test
@@ -50,6 +52,12 @@ class RemoveDups {
 
         nodeTracker = currentNode;
 
+      }
+
+      // might need to set the last thing to currentNode.value == true to handle if it's null or something
+      // nvm I guess it works still
+      if(currentNode.next == null && existingNodes.get(currentNode.value)) {
+        nodeTracker.next = null;
       }
 
       currentNode = currentNode.next;
