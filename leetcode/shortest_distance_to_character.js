@@ -38,7 +38,13 @@ var shortestToChar = function(S, C) {
 };
 
 
-//TODO
+// O(n) time
 function findNextC(currentIndex, S, C) {
+  let nextC = undefined;
 
+  for(let i = currentIndex; i < S.length; i++) {
+    if(S[i] === C) {
+      return i - currentIndex;
+    }
+  }
 }
