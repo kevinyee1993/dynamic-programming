@@ -10,15 +10,10 @@ var shortestToChar = function(S, C) {
   // in java you would make this array as long as however long the string is
   let answer = [];
 
-  // You want use whichever value previousC || nextC which is lower
-  // and then add that to the array
-  // can just use previousC but for nextC you wanna use nextC - currentIndex
-
-
   // loop through the string.  if previousC is null or 0, call findNextC
   for(let i = 0; i < S.length; i++) {
     if(nextC === null || previousC === 0) {
-      findNextC(i, S, C);
+      nextC = findNextC(i, S, C);
     }
 
     if(S[i] === C) {
@@ -44,7 +39,10 @@ function findNextC(currentIndex, S, C) {
 
   for(let i = currentIndex; i < S.length; i++) {
     if(S[i] === C) {
-      return i - currentIndex;
+      // return i - currentIndex;
+      return i;
     }
   }
 }
+
+console.log(shortestToChar("loveleetcode", 'e'));
