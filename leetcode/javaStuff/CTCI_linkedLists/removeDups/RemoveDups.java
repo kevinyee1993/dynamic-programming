@@ -1,3 +1,5 @@
+import java.util.*;
+
 class RemoveDups {
   public static void main(String[] args) {
     Node head = new Node(1);
@@ -10,13 +12,48 @@ class RemoveDups {
     head.appendToTail(6);
     head.appendToTail(3);
 
-    System.out.println(removeDups(head).length);
+
+    // hashmap test
+    // HashMap<Integer, Boolean> test = new HashMap<Integer, Boolean>();
+    // test.put(1, true);
+    // test.put(2, true);
+    // test.put(3, true);
+    //
+    // System.out.println(test.get(4));
+
+    removeDups(head);
+    head.printNodes();
+
+    // ArrayList practice
+    // ArrayList<Integer> test = new ArrayList<Integer>();
+    // test.add(1);
+    // System.out.println(test.get(0));
 
   }
 
-  public static int[] removeDups(Node head) {
-    int[] answer = new int[head.length];
-    return answer;
+  public static void removeDups(Node head) {
+    // int[] answer = new int[head.length];
+    ArrayList<Integer> answer = new ArrayList<Integer>();
+
+    HashMap<Integer, Boolean> existingNodes = new HashMap<Integer, Boolean>();
+    Node currentNode = head;
+    Node nodeTracker = head;
+
+    while(currentNode != null) {
+      if(existingNodes.get(currentNode.value) == null) {
+        existingNodes.put(currentNode.value, true);
+        answer.add(currentNode.value);
+
+        if(currentNode != nodeTracker) {
+          nodeTracker.next = currentNode;
+        }
+
+        nodeTracker = currentNode;
+
+      }
+
+      currentNode = currentNode.next;
+    }
   }
 }
 
