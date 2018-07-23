@@ -7,7 +7,12 @@ public class SelfDividingNumbers {
 
 
   // Look up later List vs ArrayList
-  public static ArrayList<Integer> selfDividingNumbers(int left, int right) {
+  // List can't instantiate new?!? look up List api and stuff
+  // looks like List is the superclass for ArrayList and LinkedList
+  // it's like polymorphism where you can set the return type as List and
+  // if you return an ArrayList, you'll be alright
+  // probably abstract superclass because can't instantiate it
+  public static List<Integer> selfDividingNumbers(int left, int right) {
     ArrayList<Integer> answer = new ArrayList<Integer>();
 
     for(int i = left; i <= right; i++) {
