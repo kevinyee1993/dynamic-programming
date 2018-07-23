@@ -1,14 +1,25 @@
+import java.util.*;
+
 public class SelfDividingNumbers {
   public static void main(String[] args) {
-    System.out.println(isSelfDividing(10));
-    System.out.println(isSelfDividing(11));
-    System.out.println(isSelfDividing(12));
-    System.out.println(isSelfDividing(13));
-    System.out.println(isSelfDividing(14));
-    System.out.println(isSelfDividing(15));
-
+    System.out.println(selfDividingNumbers(1, 22));
   }
 
+
+  // Look up later List vs ArrayList
+  public static ArrayList<Integer> selfDividingNumbers(int left, int right) {
+    ArrayList<Integer> answer = new ArrayList<Integer>();
+
+    for(int i = left; i <= right; i++) {
+      if(isSelfDividing(i)) {
+        answer.add(i);
+      }
+    }
+
+    return answer;
+  }
+
+  // O(n) time and O(1) space
   public static boolean isSelfDividing(int num) {
 
     // optimize a little for single digit numbers
