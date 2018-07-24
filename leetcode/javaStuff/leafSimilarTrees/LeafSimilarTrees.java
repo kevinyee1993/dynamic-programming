@@ -14,17 +14,25 @@ public class LeafSimilarTrees {
     a.left = new TreeNode(2);
     a.right = new TreeNode(3);
     a.right.right = new TreeNode(4);
+    a.right.left = new TreeNode(69);
 
-    System.out.println(getLeafSequence(a));
+
+    TreeNode b = new TreeNode(1);
+    b.left = new TreeNode(2);
+    b.right = new TreeNode(3);
+    b.right.right = new TreeNode(4);
+    b.right.left = new TreeNode(79);
+
+    System.out.println(isLeafSimilar(a,b));
     // System.out.println(compareLeafSequences(a, b));
 
   }
-  //
-  // public static boolean isLeafSimilar(head1, head2) {
-  //   ArrayList<Integer> leafSequence1 = getLeafSequence(head1);
-  //   ArrayList<Integer> leafSequence2 = getLeafSequence(head2);
-  //   return compareLeafSequences(leafSequence1, leafSequence2);
-  // }
+
+  public static boolean isLeafSimilar(TreeNode head1, TreeNode head2) {
+    ArrayList<Integer> leafSequence1 = getLeafSequence(head1);
+    ArrayList<Integer> leafSequence2 = getLeafSequence(head2);
+    return compareLeafSequences(leafSequence1, leafSequence2);
+  }
 
 
   // O(n) time
