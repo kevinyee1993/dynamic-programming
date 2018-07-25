@@ -1,3 +1,5 @@
+// O(n) space and time
+
 import java.util.*;
 
 public class ReturnKthToLast {
