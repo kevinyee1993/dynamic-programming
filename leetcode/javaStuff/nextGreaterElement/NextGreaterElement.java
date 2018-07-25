@@ -2,12 +2,13 @@ import java.util.*;
 
 public class NextGreaterElement {
   public static void main(String[] args) {
-    int[] test = {1,2,3,4,5};
-    HashMap<Integer, Integer> butts = turnToHash(test);
+    int[] nums1 = {2,4};
+    int[] nums2 = {1,2,3,4};
 
+    int[] answer = nextGreaterElement(nums1, nums2);
 
-    for(int i = 1; i <= butts.size(); i++) {
-      System.out.println(butts.get(i));
+    for(int i = 0; i < answer.length; i++) {
+      System.out.println(answer[i]);
     }
 
   }
@@ -17,7 +18,7 @@ public class NextGreaterElement {
     int[] answer = new int[nums1.length];
 
     for(int i = 0; i < nums1.length; i++) {
-      answer[i] = nums2Hash.get(i);
+      answer[i] = nums2Hash.get(nums1[i]);
     }
 
     return answer;
