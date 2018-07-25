@@ -10,8 +10,10 @@ public class NextGreaterElement {
     int[] answer = new int[nums1.length];
 
     for(int i = 0; i < nums1.length; i++) {
-
+      answer[i] = nums2Hash.get(i);
     }
+
+    return answer;
   }
 
 
