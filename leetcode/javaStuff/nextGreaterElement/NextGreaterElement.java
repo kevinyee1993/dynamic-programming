@@ -1,3 +1,5 @@
+// O(n) time and O(n) space
+
 import java.util.*;
 
 public class NextGreaterElement {
