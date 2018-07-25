@@ -4,12 +4,15 @@ public class LeafSimilarTrees {
   public static void main(String[] args) {
     // ArrayList<Integer> a = new ArrayList<Integer>();
     // ArrayList<Integer> b = new ArrayList<Integer>();
-
+    // ArrayList<Integer> c = new ArrayList<Integer>();
+    //
     // a.add(1);
     // b.add(1);
 
+
     // way to combine ArrayLists
     // a.addAll(b);
+    
     TreeNode a = new TreeNode(1);
     a.left = new TreeNode(2);
     a.right = new TreeNode(3);
