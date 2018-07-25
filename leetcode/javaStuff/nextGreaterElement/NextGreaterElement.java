@@ -4,10 +4,13 @@ import java.util.*;
 
 public class NextGreaterElement {
   public static void main(String[] args) {
-    int[] nums1 = {2,4};
-    int[] nums2 = {1,2,3,4};
+    // int[] nums1 = {2,4};
+    // int[] nums2 = {1,2,3,4};
 
-    int[] answer = nextGreaterElement(nums1, nums2);
+    // int[] answer = nextGreaterElement(nums1, nums2);
+
+    // can create arrays inline like this!!!!
+    int[] answer = nextGreaterElement(new int[]{2,4}, new int[]{1,2,3,4});
 
     for(int i = 0; i < answer.length; i++) {
       System.out.println(answer[i]);
