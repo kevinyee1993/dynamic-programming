@@ -1,3 +1,5 @@
+// O(n) time and space
+
 import java.util.*;
 
 public class MiddleLinkedList {
@@ -7,21 +9,27 @@ public class MiddleLinkedList {
     ListNode c = new ListNode(3);
     ListNode d = new ListNode(4);
     ListNode e = new ListNode(5);
+    ListNode f = new ListNode(6);
 
     a.next = b;
     b.next = c;
     c.next = d;
     d.next = e;
+    e.next = f;
 
-    ArrayList<ListNode> test = getFullList(a);
-    System.out.println(test.size());
+    System.out.println(findMiddleNode(a).value);
   }
 
-  // public static ListNode findMiddleNode(ListNode head) {
-  //   ArrayList<ListNode> allNodes = getFullList(head);
-  //
-  //
-  // }
+  public static ListNode findMiddleNode(ListNode head) {
+    ArrayList<ListNode> allNodes = getFullList(head);
+
+    // if(allNodes.size() % 2 == 1) {
+      return allNodes.get(allNodes.size() / 2);
+    // } else {
+      // return allNodes.get((allNodes.size() / 2) + 1);
+    // }
+
+  }
 
   public static ArrayList<ListNode> getFullList(ListNode head) {
     ArrayList<ListNode> answer = new ArrayList<ListNode>();
