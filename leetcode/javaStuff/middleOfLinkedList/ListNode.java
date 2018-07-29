@@ -1,7 +1,7 @@
 public class ListNode {
 
   int value;
-  int next;
+  ListNode next;
 
   public ListNode(int value) {
     this.value = value;
