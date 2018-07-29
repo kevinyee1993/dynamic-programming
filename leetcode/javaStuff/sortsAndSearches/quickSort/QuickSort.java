@@ -1,3 +1,6 @@
+// O(1) space
+// O(nlog(n)) time
+
 public class QuickSort {
   public static void main(String[] args) {
       int[] test = {6,2,12,3,1,36,2};
