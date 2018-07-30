@@ -3,7 +3,7 @@
 public class BinarySearch {
   public static void main(String[] args) {
     int[] test = {0,1,6,9,12,354};
-    int answer = binarySearch(test, 354);
+    int answer = binarySearch(test, 356);
 
     System.out.println(answer);
   }
