@@ -12,8 +12,6 @@ public class SingleNumber {
     // HashMap<Integer, Integer> numberTracker = new HashMap<Integer, Integer>();
 
     // System.out.println(numberTracker.get(1));
-
-
   }
 
   public static int findSingleNumber(int[] numbers) {
