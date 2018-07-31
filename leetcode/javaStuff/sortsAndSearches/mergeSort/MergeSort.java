@@ -1,3 +1,5 @@
+// O(n log(n)) time and memory depends 
+
 public class MergeSort {
   public static void main(String[] args) {
     // int[] test = {5,3,12,5,2};
