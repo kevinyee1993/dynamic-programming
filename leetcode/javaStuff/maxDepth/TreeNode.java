@@ -1,7 +1,7 @@
 public class TreeNode {
   int value;
-  int left;
-  int right;
+  TreeNode left;
+  TreeNode right;
 
   public TreeNode(int value) {
     this.value = value;
