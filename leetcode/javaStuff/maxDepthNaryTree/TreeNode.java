@@ -1,4 +1,4 @@
-public static TreeNode {
+public class TreeNode {
   int value;
   TreeNode left;
   TreeNode right;
