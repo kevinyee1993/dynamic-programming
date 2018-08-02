@@ -1,6 +1,18 @@
 public class MaxDepthNaryTree {
   public static void main(String[] args) {
-    System.out.println(findBiggest(4,3,2));
+    TreeNode a = new TreeNode(1);
+    TreeNode leftB = new TreeNode(1);
+    TreeNode middleB = new TreeNode(1);
+    TreeNode rightB = new TreeNode(1);
+
+    a.left = leftB;
+    a.middle = middleB;
+    a.right = rightB;
+
+    TreeNode leftC = new TreeNode(1);
+    leftB.left = leftC;
+
+    System.out.println(maxDepthNaryTree(a));
   }
 
   public static int maxDepthNaryTree(TreeNode root) {
@@ -21,11 +33,11 @@ public class MaxDepthNaryTree {
   public static int findBiggest(int left, int middle, int right) {
     int biggest = middle;
 
-    if(left >= middle) {
+    if(left > middle) {
       biggest = left;
     }
 
-    if(right >= middle) {
+    if(right > middle) {
       biggest = right;
     }
 
