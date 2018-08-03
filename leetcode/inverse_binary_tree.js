@@ -5,26 +5,31 @@ class TreeNode {
   }
 }
 
-// function inverseBinaryTree(root) {
-//   if(root === null || root.left === null && root.right === null) {
-//     return;
-//   }
-//
-//   console.log(root.value);
-//
-//   let temp = root.left;
-//   root.left = root.right;
-//   root.right  = temp;
-//
-//   inverseBinaryTree(root.left);
-//   inverseBinaryTree(root.right);
-// }
+function inverseBinaryTree(root) {
+  if(root === null) {
+    return;
+  }
+  if(root !== null && noChildren(root)) {
+    return;
+  }
 
-function switchsies(root) {
   let temp = root.left;
   root.left = root.right;
-  root.right = temp;
+  root.right  = temp;
+
+  inverseBinaryTree(root.left);
+  inverseBinaryTree(root.right);
 }
+
+function noChildren(root) {
+  return root.left === null && root.right === null;
+}
+
+// function switchsies(root) {
+//   let temp = root.left;
+//   root.left = root.right;
+//   root.right = temp;
+// }
 
 function inOrderTraversal(root) {
   if(root) {
@@ -44,6 +49,7 @@ function preOrderTraversal(root) {
 
 function BFS(root) {
   let queue = [root];
+  let answer = [];
   // let queue = [root];
 
   while(queue.length > 0) {
@@ -57,7 +63,10 @@ function BFS(root) {
     }
 
     console.log(currentNode.value);
+    answer.push(currentNode);
   }
+
+  return answer;
 }
 
 
@@ -70,7 +79,9 @@ a.left = b;
 a.right = c;
 b.left = d;
 
-// inverseBinaryTree(a);
+BFS(a);
+inverseBinaryTree(a);
+BFS(a);
 // switchsies(a);
 // preOrderTraversal(a);
-BFS(a);
+// BFS(a);
