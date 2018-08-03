@@ -15,7 +15,13 @@ let person = new Person("kelving");
 
 let methurd = person.testFunction;
 
-methurd();
+let hash = {1: true, 2: true};
+
+Object.keys(hash).forEach(el => {
+  if(hash[el]) {
+    console.log("hello");
+  }
+});
 
 
 
