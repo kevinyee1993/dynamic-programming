@@ -56,6 +56,8 @@ public class BSTtoGreaterTree {
 
   }
 
+  // maybe way to memoize the results of this so you don't have to call every time?
+
   // call this not on the root bc would make the recursion weird
   // but call it using the target node's right node as the param
   // and just sum all them boiz up
