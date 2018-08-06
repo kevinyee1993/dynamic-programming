@@ -16,7 +16,7 @@ function helper(message, numLastLetters) {
     return 0;
   }
 
-  if(message === "") {
+  if(message.substring(startRef, message.length) === "") {
     return 1;
   }
 
@@ -49,13 +49,14 @@ function helper(message, numLastLetters) {
     "26": "z"
   };
 
-  if( !numToLetters[message[startRef] + message[startRef + 1]]) {
-    return 0;
+  let result = helper(message, numLastLetters - 1);
+
+  if(numToLetters[message[startRef] + message[startRef + 1]]) {
+    result++;
   }
 
-  let firstOptionCount = 1 + helper(message, numLastLetters - 1);
-  let secondOptionCount = 1 + helper(message, numLastLetters - 2);
-
-  return firstOptionCount + secondOptionCount;
+  return result;
 
 }
+
+console.log(numWaysDecode("1111"));
