@@ -1,10 +1,12 @@
 function mostCommonWord(paragraph, banned) {
-  paragraph = paragraph.replace(/[^a-zA-Z]/, '').toLowerCase();
+  paragraph = paragraph.replace(/[^a-zA-Z ]/, '').toLowerCase();
 
   let strArr = paragraph.split(" ");
   let wordCounter = {};
   let biggestCount = 0;
   let mostWord = null;
+
+  console.log(strArr);
 
   banned.forEach(word => {
     for(let i = 0; i < strArr.length; i++) {
