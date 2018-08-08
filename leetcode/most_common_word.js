@@ -6,16 +6,17 @@ function mostCommonWord(paragraph, banned) {
   let biggestCount = 0;
   let mostWord = null;
 
-  console.log(strArr);
 
   banned.forEach(word => {
     for(let i = 0; i < strArr.length; i++) {
       if(strArr[i] === word.toLowerCase()) {
         strArr.splice(i, 1);
+        i--;
       }
     }
   });
 
+  console.log(strArr);
 
   strArr.forEach(word => {
     if(!wordCounter[word]) {
@@ -35,5 +36,4 @@ function mostCommonWord(paragraph, banned) {
 
 }
 
-
-mostCommonWord("Bob. hIt, baLl", ["bob", "hit"]);
+mostCommonWord("abc abc? abcd the jeff!", ["abc","abcd","jeff"]);
