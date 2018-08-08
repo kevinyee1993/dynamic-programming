@@ -1,3 +1,9 @@
+/*
+Naive solution
+time: O(nm) where n is the length of the paragraph and m is the length of banned words
+space: O(n) linear because creating new strArr and hash
+*/
+
 function mostCommonWord(paragraph, banned) {
   paragraph = paragraph.replace(/[^a-zA-Z ]/g, '').toLowerCase();
 
