@@ -1,5 +1,5 @@
 function mostCommonWord(paragraph, banned) {
-  paragraph = paragraph.replace(/[^a-zA-Z ]/, '').toLowerCase();
+  paragraph = paragraph.replace(/[^a-zA-Z ]/g, '').toLowerCase();
 
   let strArr = paragraph.split(" ");
   let wordCounter = {};
@@ -36,4 +36,4 @@ function mostCommonWord(paragraph, banned) {
 }
 
 
-mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", ["hit"]);
+mostCommonWord("Bob. hIt, baLl", ["bob", "hit"]);
