@@ -25,7 +25,7 @@ let g = new TreeNode(9);
 c.left = f;
 c.right = g;
 
-// solution 2 using hashes
+// solution 2 using hashes - O(n) time and space
 function findTarget(root, k) {
   let nodesArray = createArrayFromRoot(root); // return array of all elements O(n) time and space
 
