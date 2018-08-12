@@ -30,6 +30,9 @@ function merge(arr1, arr2) {
     }
   }
 
+
+  // REMEMBER CONCAT RETURNS NEW ARRAY, IT DOES NOT MODIFY
+  // THE ARRAY THAT IS PASSED IN!!
   mergedArr = mergedArr.concat(smaller);
   mergedArr = mergedArr.concat(bigger);
 
