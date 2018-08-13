@@ -6,22 +6,24 @@ class TreeNode {
 }
 
 function depthFirstSearch(root, target) {
+
   if(root === null) {
-    return;
-  } else if(root.left === null && root.right === null) {
-    console.log(root.value);
-    return;
+    return null;
+  } else if(root.value === target) {
+    return root;
   }
 
-  if(root.left) {
-    console.log(root.value);
-    depthFirstSearch(root.left);
+  let leftCheck = depthFirstSearch(root.left, target);
+  let rightCheck = depthFirstSearch(root.right, target);
+
+  if(leftCheck) {
+    return leftCheck;
   }
 
-  if(root.right) {
-    console.log(root.value);
-    depthFirstSearch(root.right);
+  if(rightCheck) {
+    return rightCheck;
   }
+
 }
 
 let a = new TreeNode(1);
@@ -47,4 +49,5 @@ g.right = h;
 h.right = i;
 i.right = j;
 
-depthFirstSearch(a);
+
+console.log(depthFirstSearch(a, 10));
