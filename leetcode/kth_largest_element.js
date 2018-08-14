@@ -8,7 +8,7 @@ function findKthLargest(nums, k) {
   //   // return b - a;}
   // );
 
-  nums = quickSort(nums);
+  nums = mergeSort(nums);
   return nums[nums.length - k];
 }
 
@@ -28,7 +28,37 @@ function quickSort(nums) {
   let right =  nums.filter(el => el > partition);
 
   return quickSort(left).concat([partition]).concat(quickSort(right));
+}
 
+
+// practice using merge sort without references
+function mergeSort(nums) {
+  if(nums === null) {
+    return null;
+  }
+
+  if(nums.length <= 1) {
+    return nums;
+  }
+  let midPoint = Math.floor(nums.length / 2);
+  let left = mergeSort(nums.slice(0, midPoint));
+  let right = mergeSort(nums.slice(midPoint, nums.length));
+
+  return merge(left, right);
+}
+
+function merge(arr1, arr2) {
+  let answer = [];
+
+  while(arr1.length > 0 && arr2.length > 0) {
+    if(arr1[0] > arr2[0]) {
+      answer.push(arr2.shift());
+    } else {
+      answer.push(arr1.shift());
+    }
+  }
+
+  return answer.concat(arr1).concat(arr2);
 }
 
 
