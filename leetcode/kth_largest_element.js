@@ -3,18 +3,31 @@
 function findKthLargest(nums, k) {
   // console.log(nums);
   // built in numeric sort
-  nums.sort((a, b) => {
-    return a - b;}
-    // return b - a;}
-  );
+  // nums.sort((a, b) => {
+  //   return a - b;}
+  //   // return b - a;}
+  // );
 
-  console.log(nums);
+  nums = quickSort(nums);
   return nums[nums.length - k];
 }
 
 
 // just practicing quicksort
 function quickSort(nums) {
+  if(nums === null) {
+    return null;
+  }
+
+  if(nums.length <= 1) {
+    return nums;
+  }
+
+  let partition = nums.shift();
+  let left =  nums.filter(el => el <= partition);
+  let right =  nums.filter(el => el > partition);
+
+  return quickSort(left).concat([partition]).concat(quickSort(right));
 
 }
 
