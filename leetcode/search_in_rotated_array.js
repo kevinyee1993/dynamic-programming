@@ -9,7 +9,7 @@ function searchRotatedArray(arr, target) {
   let newSorted = small.concat(big);
 
   // O(log(n)) time
-  return binarySearch(newSorted, target);
+  return binarySearch(newSorted, target) + slicePoint;
 
 }
 
@@ -54,7 +54,8 @@ function binarySearch(arr, target) {
   }
 }
 
-// let test = [5,7,9,1,3,4];
+let test = [15,16,19,20,25,1,3,4,5,7,10,14];
+console.log(searchRotatedArray(test, 5));
 // let sortedBorted = [1,3,10,11];
 // console.log(binarySearch(sortedBorted, 11));
 // console.log(findElementDrop(test));
