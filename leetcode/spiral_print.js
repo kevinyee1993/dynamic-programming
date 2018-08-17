@@ -11,46 +11,57 @@ function spiralPrint(matrix) {
 
   let numElements = matrix.length * matrix[0].length;
 
-  console.log(numElements);
-
   // loops through every single element
   for(let i = 0; i < numElements; i++) {
+
     switch(currDirection) {
       case "right":
         console.log(matrix[currY][currX]);
         currX++;
 
         if(currX >= rightLimit) {
+          currX--;
           currDirection = "down";
           rightLimit--;
+          break;
         }
         break;
       case "down":
-        console.log(matrix[currY][currX]);
         currY++;
 
         if(currY >= downLimit) {
           currDirection = "left";
+          currY--;
           downLimit--;
+          break;
         }
+
+        console.log(matrix[currY][currX]);
         break;
       case "left":
-        console.log(matrix[currY][currX]);
         currX--;
 
         if(currX <= leftLimit) {
+          console.log(matrix[currY][currX]);
           currDirection = "up";
+          currX++;
           leftLimit++;
+          break;
         }
+        console.log(matrix[currY][currX]);
         break;
       case "up":
-      console.log(matrix[currY][currX]);
       currY--;
 
-      if(currX <= upLimit) {
+      if(currY <= upLimit) {
+        console.log(matrix[currY][currX]);
         currDirection = "right";
-        leftLimit++;
+        currY++;
+        upLimit++;
+        break;
       }
+
+      console.log(matrix[currY][currX]);
       break;
     }
   }
@@ -65,5 +76,5 @@ function changeDirection(dir) {
   }
 }
 
-let matrix = [[1,2,3],[4,5,6],[1,2,3],[1,2,3]];
+let matrix = [[1,2,3],[4,5,6],[7,8,9]];
 spiralPrint(matrix);
