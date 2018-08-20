@@ -48,4 +48,5 @@ a.next = b;
 b.next = c;
 c.next = d;
 
+deleteNode(a, 2);
 printList(a);
