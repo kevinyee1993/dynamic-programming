@@ -9,7 +9,13 @@ class minHeap {
   }
 
   removeMinimumElement() {
+    let minEl = this.heap[0];
+    this.heap[0] = this.heap[this.heap.length - 1];
+    this.heap.pop();
 
+    this.heapifyDown();
+
+    return minEl;
   }
 
   peek() {
@@ -36,13 +42,26 @@ class minHeap {
   }
 
   heapifyDown() {
-
+    
   }
 
   getParentFromIndex(idx) {
     return Math.floor((idx - 1) / 2);
   }
+
+  getLeftChildFromIndex(idx) {
+    return (idx * 2) + 1;
+  }
+
+  getRightChildFromIndex(idx) {
+    return (idx * 2) + 2;
+
+  }
 }
 
 let fart = new minHeap();
-console.log(fart.getParentFromIndex(4));
+fart.insertElement(5);
+fart.insertElement(7);
+fart.insertElement(6);
+fart.insertElement(2);
+console.log(fart.heap);
