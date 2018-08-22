@@ -13,7 +13,7 @@ class minHeap {
     this.heap[0] = this.heap[this.heap.length - 1];
     this.heap.pop();
 
-    this.heapifyDown();
+    this.heapifyDown(0);
 
     return minEl;
   }
@@ -41,8 +41,44 @@ class minHeap {
 
   }
 
-  heapifyDown() {
-    
+  heapifyDown(currElIdx) {
+    let minEl = this.heap[currElIdx];
+    let leftIdx = this.getLeftChildFromIndex(currElIdx);
+    let rightIdx = this.getRightChildFromIndex(currElIdx);
+
+    let smallBoy;
+    let bigBoy;
+
+
+    if(this.heap[currElIdx] <= this.heap[smallBoy] && this.heap[currElIdx] <= this.heap[bigBoy]) {
+      return;
+    }
+
+    if(this.heap[leftIdx] < this.heap[rightIdx]) {
+      smallBoy = leftIdx;
+      bigBoy = rightIdx;
+    } else {
+      smallBoy = rightIdx;
+      bigBoy = leftIdx;
+    }
+
+    if(this.heap[currElIdx] > this.heap[smallBoy]) {
+      let temp = this.heap[currElIdx];
+      this.heap[currElIdx] = this.heap[smallBoy];
+      this.heap[smallBoy] = temp;
+
+      this.heapifyDown(smallBoy);
+      return;
+    }  else if(this.heap[currElIdx] > this.heap[bigBoy]){
+      let temp = this.heap[currElIdx];
+      this.heap[currElIdx] = this.heap[bigBoy];
+      this.heap[bigBoy] = temp;
+
+      this.heapifyDown(bigBoy);
+      return;
+    }
+
+
   }
 
   getParentFromIndex(idx) {
@@ -64,4 +100,15 @@ fart.insertElement(5);
 fart.insertElement(7);
 fart.insertElement(6);
 fart.insertElement(2);
+console.log(fart.heap);
+
+fart.removeMinimumElement();
+console.log(fart.heap);
+
+fart.insertElement(1);
+fart.insertElement(4);
+fart.insertElement(100);
+console.log(fart.heap);
+
+fart.removeMinimumElement();
 console.log(fart.heap);
