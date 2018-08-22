@@ -3,16 +3,21 @@ class minHeap {
     this.heap = [];
   }
 
-  insertElement() {
-
+  insertElement(el) {
+    this.heap.push(el);
+    this.heapifyUp(el);
   }
 
   removeMinimumElement() {
 
   }
 
-  heapifyUp() {
+  peek() {
+    return this.heap[0];
+  }
 
+  heapifyUp(el) {
+    
   }
 
   heapifyDown() {
