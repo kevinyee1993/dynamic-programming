@@ -1,3 +1,6 @@
+// O(n) time
+// O(1) space
+
 function isMonotonic(A) {
 
   // edge case if length of array is just 1
