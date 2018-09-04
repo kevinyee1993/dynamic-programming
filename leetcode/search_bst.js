@@ -1,3 +1,6 @@
+// O(log(n)) time
+// O(n) space because recursive call
+
 class TreeNode {
   constructor(val) {
     this.val = val;
