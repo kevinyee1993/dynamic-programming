@@ -41,4 +41,4 @@ function findRemoves(arr) {
 }
 
 // console.log(findOuts([1,2,3,5,4,6,7,2,4,8]));
-console.log(outOfPlace([1,2,3,5,4,6,1]));
+console.log(outOfPlace([2,3,2,3,4]));
