@@ -19,6 +19,14 @@ function removeKthNode(head, k) {
   prev.next = prev.next.next;
 }
 
+function printList(head) {
+  let curr = head;
+  while(curr) {
+    console.log(curr.value);
+    curr = curr.next;
+  }
+}
+
 let a = new ListNode(1);
 let b = new ListNode(2);
 let c = new ListNode(3);
@@ -29,3 +37,7 @@ a.next = b;
 b.next = c;
 c.next = d;
 d.next = e;
+
+printList(a);
+removeKthNode(a, 2);
+printList(a);
