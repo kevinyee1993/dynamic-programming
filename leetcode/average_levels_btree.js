@@ -6,7 +6,5 @@ class TreeNode{
 }
 
 function averageOfLevels(root) {
-  if(!root.left && !root.right) {
-    return [root];
-  }
+  let tracker = {};
 }
