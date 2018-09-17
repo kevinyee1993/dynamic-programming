@@ -5,7 +5,8 @@ class TreeNode {
   }
 }
 
-
+// O(n) time complexity because have to touch every element
+// O(n) space complexity because creating new arrays
 function minimalTree(arr) {
   if(arr.length < 1) {
     return null;
