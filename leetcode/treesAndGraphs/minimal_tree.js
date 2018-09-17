@@ -17,7 +17,7 @@ function minimalTree(arr) {
 
   let midPoint = Math.floor(arr.length / 2);
 
-  let mid = arr[arr.length / 2];
+  let mid = arr[midPoint];
   let midNode = new TreeNode(mid);
 
   let leftArr = arr.slice(0, midPoint);
@@ -28,3 +28,5 @@ function minimalTree(arr) {
 
   return midNode;
 }
+
+console.log(minimalTree([1,2,3,4,5]));
