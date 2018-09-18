@@ -5,6 +5,13 @@ class TreeNode {
   }
 }
 
+class ListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 
 function listOfDepths(root) {
   const depthTracker = {};
@@ -30,6 +37,21 @@ function helper(root, currDepth, depthTracker) {
   helper(root.right, currDepth + 1, depthTracker);
 }
 
+
+// turns arrays of nodes into linked lists
+function arrToLinkedList(arr) {
+  const firstNode = new ListNode(arr[0].value);
+  let currNode = firstNode;
+
+  for(let i = 1; i < arr.length; i++) {
+    let newNode = new ListNode(arr[i].value);
+    currNode.next = newNode;
+    currNode = newNode;
+  }
+
+  return firstNode;
+}
+
 let a = new TreeNode(1);
 let b = new TreeNode(2);
 let c = new TreeNode(3);
@@ -41,4 +63,6 @@ a.right = c;
 b.left = d;
 d.left = e;
 
-console.log(listOfDepths(a));
+
+
+// console.log(listOfDepths(a));
