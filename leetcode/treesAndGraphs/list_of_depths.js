@@ -12,14 +12,22 @@ class ListNode {
   }
 }
 
-
+// O(n) time
+// O(n) space
 function listOfDepths(root) {
   const depthTracker = {};
 
   // depthTracker should be updated as it is passed in,
   // so nothing really needs to be returned
   helper(root, 1, depthTracker);
-  return depthTracker;
+
+  let listArr = [];
+
+  Object.keys(depthTracker).forEach( depth => {
+    listArr.push(arrToLinkedList(depthTracker[depth]));
+  } );
+
+  return listArr;
 }
 
 function helper(root, currDepth, depthTracker) {
@@ -65,4 +73,4 @@ d.left = e;
 
 
 
-// console.log(listOfDepths(a));
+console.log(listOfDepths(a));
