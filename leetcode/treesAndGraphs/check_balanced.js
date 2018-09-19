@@ -6,7 +6,12 @@ class TreeNode {
 }
 
 function checkBalanced(root) {
+  let leftDepth = findDepth(root.left);
+  let rightDepth = findDepth(root.right);
 
+  let difference = Math.abs(leftDepth - rightDepth);
+
+  return difference <= 1;
 }
 
 function findDepth(root) {
@@ -31,3 +36,7 @@ function findDepth(root) {
 let a = new TreeNode(1);
 let b = new TreeNode(1);
 let c = new TreeNode(1);
+
+a.left = b;
+b.right = c;
+console.log(checkBalanced(a));
