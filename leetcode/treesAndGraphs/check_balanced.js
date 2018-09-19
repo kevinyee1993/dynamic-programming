@@ -5,6 +5,8 @@ class TreeNode {
   }
 }
 
+// time: O(n)
+// space: O(n)
 function checkBalanced(root) {
   let leftDepth = findDepth(root.left);
   let rightDepth = findDepth(root.right);
@@ -14,6 +16,8 @@ function checkBalanced(root) {
   return difference <= 1;
 }
 
+// time: O(n)
+// space: O(n)
 function findDepth(root) {
   if(!root) {
     return 0;
