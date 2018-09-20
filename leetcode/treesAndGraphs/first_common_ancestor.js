@@ -6,19 +6,37 @@ class TreeNode {
   }
 }
 
-function firstCommonAncestor(head) {
+function firstCommonAncestor(head, node1, node2) {
+
+  if(!head) {
+    return null;
+  }
+
+  let leftCheck = headContainsNodes(head.left, node1, node2);
+  let rightCheck = headContainsNodes(head.right, node1, node2);
+
+  if(leftCheck) {
+    return firstCommonAncestor(head.left, node1, node2);
+  } else if (rightCheck) {
+    return firstCommonAncestor(head.right, node1, node2);
+  } else {
+    return head;
+  }
 
 }
 
+function headContainsNodes(head, node1, node2) {
+  return treeContainsNode(head, node1) && treeContainsNode(head, node2);
+}
 
-// good opportunity to practice DFS and BFS
-// actually not sure but practice those anyways
+// O(n) space where n is the depth of the tree
+// O(n) time where n is the number of nodes in the tree
 function treeContainsNode(head, target) {
   if(!head) {
     return false;
   }
 
-  if(head.value === target) {
+  if(head.value === target.value) {
     return true;
   }
 
@@ -34,7 +52,7 @@ let c = new TreeNode(3);
 let d = new TreeNode(4);
 
 a.left = b;
-a.right = c;
+b.right = c;
 b.left = d;
 
-console.log(treeContainsNode(b, 4));
+console.log(firstCommonAncestor(a, c, d));
