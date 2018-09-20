@@ -6,6 +6,9 @@ class TreeNode {
   }
 }
 
+// time: O(nlog(n))
+// space: O(n) 
+
 function firstCommonAncestor(head, node1, node2) {
 
   if(!head) {
