@@ -68,15 +68,51 @@ c.parent = b;
 d.parent = b;
 
 a.left = b;
-b.right = c;
+a.right = c;
 b.left = d;
 
 // console.log(firstCommonAncestor(a, c, d));
-
+// O(n) time
+// O(1) space
 function firstCommonAncestorWithParent(head, node1, node2) {
+  let depth1 = findDepth(node1);
+  let depth2 = findDepth(node2);
+
+  let bigDepth;
+  let shortDepth;
+  let deepNode;
+  let shortNode;
+
+  if(depth1 > depth2) {
+    bigDepth = depth1;
+    shortDepth = depth2;
+    deepNode = node1;
+    shortNode = node2;
+  } else {
+    bigDepth = depth2;
+    shortDepth = depth1;
+    deepNode = node2;
+    shortNode = node1;
+  }
+
+  // O(n) time
+  while(bigDepth > shortDepth) {
+    bigDepth--;
+    deepNode = deepNode.parent;
+  }
+
+  // O(n) time
+  while(deepNode.parent !== shortNode.parent) {
+    deepNode = deepNode.parent;
+    shortNode = shortNode.parent;
+  }
+
+  return deepNode.parent;
 
 }
 
+// O(n) time
+// O(1) space
 function findDepth(head) {
   if(!head.parent) {
     return 1;
@@ -84,3 +120,5 @@ function findDepth(head) {
     return 1 + findDepth(head.parent);
   }
 }
+
+console.log(firstCommonAncestorWithParent(a,c,b));
