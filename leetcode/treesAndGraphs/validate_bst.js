@@ -5,6 +5,9 @@ class TreeNode {
   }
 }
 
+
+// time: O(n) because evaluating every node once
+// space: O(n) where n is the depth of the tree
 function validateBST(head) {
   // left <= head
   // right > head
