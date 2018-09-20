@@ -62,7 +62,11 @@ let a = new TreeNode(1);
 let b = new TreeNode(2);
 let c = new TreeNode(3);
 let d = new TreeNode(4);
-//
+
+b.parent = a;
+c.parent = b;
+d.parent = b;
+
 a.left = b;
 b.right = c;
 b.left = d;
@@ -74,21 +78,9 @@ function firstCommonAncestorWithParent(head, node1, node2) {
 }
 
 function findDepth(head) {
-  if(!head) {
-    return 0;
-  }
-
-  let leftDepth = findDepth(head.left);
-  let rightDepth = findDepth(head.right);
-  let bigDepth;
-
-  if(leftDepth > rightDepth) {
-    bigDepth = leftDepth;
+  if(!head.parent) {
+    return 1;
   } else {
-    bigDepth = rightDepth;
+    return 1 + findDepth(head.parent);
   }
-
-  return 1 + bigDepth;
 }
-
-console.log(findDepth(a));
