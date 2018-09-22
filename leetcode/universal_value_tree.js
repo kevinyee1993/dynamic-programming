@@ -5,11 +5,23 @@ class TreeNode {
   }
 }
 
-
 function countUnivalTrees(head) {
+  let count = 0;
 
+  if(!head) {
+    return 0;
+  }
+
+  if(isUnivalTree(head)) {
+    count = 1;
+  }
+
+  return count + countUnivalTrees(head.left) + countUnivalTrees(head.right);
 }
 
+
+// O(n) time where n is the amount of nodes in the tree
+// O(n) space where n is the depth of the stack trace
 function isUnivalTree(head) {
   if(!head) {
     return false;
@@ -30,9 +42,24 @@ function isUnivalTree(head) {
   return false;
 }
 
-let a = new TreeNode(1);
+let a = new TreeNode(0);
 let b = new TreeNode(1);
-let c = new TreeNode(1);
+let c = new TreeNode(0);
+
+let d = new TreeNode(1);
+let e = new TreeNode(0);
+
+c.left = d;
+c.right = e;
+
+let f = new TreeNode(1);
+let g = new TreeNode(1);
+
+d.left = f;
+d.right = g;
+
 
 a.left = b;
 a.right = c;
+
+console.log(countUnivalTrees(a));
