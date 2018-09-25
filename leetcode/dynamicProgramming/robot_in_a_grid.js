@@ -19,9 +19,15 @@ function robotGrid(grid) {
   return downCheck || rightCheck;
 }
 
+// right now this is just checking if a path exists,
+// need to also return the path itself
 function helper(currRow, currCol, targetRow, targetCol, grid) {
   if(currRow === targetRow && currCol === targetCol) {
     return true;
+  }
+
+  if(currRow > grid.length - 1 || currCol > grid[0].length - 1) {
+    return false;
   }
 
   let currPos = grid[currRow][currCol];
@@ -35,3 +41,11 @@ function helper(currRow, currCol, targetRow, targetCol, grid) {
 
   return downCheck || rightCheck;
 }
+
+let grid = [
+  [1,1,1],
+  [null,1,null],
+  [1,null,1]
+];
+
+console.log(robotGrid(grid));
