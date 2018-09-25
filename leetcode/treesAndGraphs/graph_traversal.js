@@ -1,3 +1,5 @@
+// O(nd) time where n is the number of elements and d is the number of call stacks
+// O(n) space where n is the number of elements
 function findLongestColor(graph) {
   const visitedNodes = initializeVisitedHash(graph);
   const biggest = { count: 0, color: null };
@@ -27,6 +29,8 @@ function findLongestColor(graph) {
   return biggest;
 }
 
+// O(n) time where n is the number of elements in the graph
+// O(d) space where d is the number of call stacks
 function traverseGraph(row, col, currCount, visitedNodes, prevColor, graph) {
   if(!graph[row] || !graph[row][col]) {
     return;
@@ -45,6 +49,8 @@ function traverseGraph(row, col, currCount, visitedNodes, prevColor, graph) {
   }
 }
 
+// O(r) time where r is the num of rows
+// O(r) space where r is the num of rows;
 function initializeVisitedHash(graph) {
   const visitedNodes = {};
 
