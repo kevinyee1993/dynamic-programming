@@ -1,3 +1,6 @@
+// O(n^2) time because each recursive call makes 2 more recursive calls but need to double check
+// O(n^2) time because of the stack frames
+
 function robotGrid(grid) {
   // at current position
   let currRow = 0;
