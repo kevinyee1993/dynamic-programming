@@ -39,7 +39,9 @@ function sortPoints(points) {
 
 // O(1) time and space
 function sumDistance(point) {
-  return Math.abs(point[0]) + Math.abs(point[1]);
+  let point1 = point[0] * point[0];
+  let point2 = point[1] * point[1];
+  return Math.sqrt(point1 + point2);
 }
 
 const points = [[-2,4], [0,-2], [-1,0], [3,5], [-2,-3], [3,2]];
