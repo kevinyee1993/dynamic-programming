@@ -1,9 +1,17 @@
+// O(nlog(n)) time
+// O(n^2) space
 function kClosest(points, k) {
   const sortedPoints = sortPoints(points);
   return sortedPoints.slice(0,k);
 }
 
-// needs to sort lowest to highest
+// this is where optimization can happen at least for space complexity
+// change to a quickSort where you use references rather than creating new arrays
+
+// O(nlog(n)) time
+
+// O(n^2) space where n is the depth - each call stack is creating 2 more call stacks
+// actually need to check the space complexity for this.
 function sortPoints(points) {
   if(points.length <= 1) {
     return points;
@@ -29,6 +37,7 @@ function sortPoints(points) {
   return sortPoints(left).concat([pivot]).concat(sortPoints(right));
 }
 
+// O(1) time and space
 function sumDistance(point) {
   return Math.abs(point[0]) + Math.abs(point[1]);
 }
