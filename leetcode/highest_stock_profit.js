@@ -17,5 +17,27 @@ function getMaxProfit(stockPrices) {
   return highestProfit;
 }
 
+
+// O(n) time
+// O(1) space
+function efficientGetMaxProfit(stockPrices) {
+  let currLowPrice = stockPrices[0];
+  let highestProfit = 0;
+
+  for(let i = 1; i < stockPrices.length; i++) {
+    let currPrice = stockPrices[i];
+
+    if(currPrice - currLowPrice > highestProfit) {
+      highestProfit = currPrice - currLowPrice;
+    }
+
+    if(currPrice - currLowPrice < 0) {
+      currLowPrice = currPrice;
+    }
+  }
+
+  return highestProfit;
+}
+
 const stockPrices = [10, 7, 5, 8, 11, 9];
-console.log(getMaxProfit(stockPrices));
+console.log(efficientGetMaxProfit(stockPrices));
