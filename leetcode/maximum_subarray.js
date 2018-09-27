@@ -6,29 +6,34 @@
 // O(n) runtime
 
 function maxSubarray(arr) {
-  let biggestArr = [];
+  let bigStart = 0;
+  let bigEnd = 1;
+
   let biggestSum = 0;
 
-  let currArr = [];
+  let currStart = 0;
+  let currEnd = 1;
+
   let currSum = 0;
 
   for(let i = 0; i < arr.length; i++) {
     currSum += arr[i];
-    currArr.push(arr[i]);
+    currEnd++;
 
     if(currSum > biggestSum) {
       biggestSum = currSum;
-      biggestArr = Array.from(currArr);
+      bigStart = currStart;
+      bigEnd = currEnd;
     }
 
     if(currSum < 0) {
-      currArr = [];
+      currStart = i + 1;
+      currEnd = i + 1;
       currSum = 0;
     }
   }
-
-  return biggestArr;
+  return arr.slice(bigStart, bigEnd);
 }
 
-const arr = [1, -3, 2, 1, -1];
+const arr = [1, -3, 2, 1, -1, 3, -100];
 console.log(maxSubarray(arr));
