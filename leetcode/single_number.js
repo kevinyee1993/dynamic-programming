@@ -9,4 +9,4 @@ function findSingleNumber(arr) {
   return store;
 }
 
-console.log(findSingleNumber([4,1,2,1,2,4,5]));
+console.log(findSingleNumber([2,2,1]));
