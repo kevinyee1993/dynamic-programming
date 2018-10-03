@@ -1,7 +1,7 @@
 /* header */
 .hero-main {
   background-color: #F7F7F7;
-  padding: 10px;
+  padding: 15px;
 }
 
 .hero-main > header {
@@ -30,7 +30,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   flex-direction: column;
   margin-top: 10px;
 }
@@ -45,14 +44,33 @@
   font-size: 60px;
   font-weight: 700;
   line-height: 0.97;
+  margin-bottom: 20px;
 }
 
 .hero-main-meat-description {
     display: flex;
     font-size: 25px;
     font-weight: lighter;
-    border: 1px solid black;
     width: 550px;
-    /* justify-content: center; */
-    /* align-content: center; */
+}
+
+.header-images {
+  height: 80%;
+  width: 80%;
+}
+
+.scroll-btn {
+  width: 25px;
+  height: 40px;
+  border-radius: 20px;
+  border: 3px solid black;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.scroll-btn-directions {
+  font-family: sans-serif;
+  font-weight: lighter;
+  font-size: 12px;
+  letter-spacing: 1.4px;
 }
