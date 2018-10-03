@@ -1,0 +1,20 @@
+.hero-main {
+  background-color: #F7F7F7;
+}
+
+.hero-main > header {
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+}
+
+.header-left-buttons {
+  display: flex;
+  margin-top: 15px;
+}
+
+.header-left-buttons h2{
+  margin-left: 20px;
+  font-weight: lighter;
+  font-size: 20px;
+}
