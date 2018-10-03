@@ -1,20 +1,58 @@
+/* header */
 .hero-main {
   background-color: #F7F7F7;
+  padding: 10px;
 }
 
 .hero-main > header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: sans-serif;
+}
+
+.logo {
+  font-size: 30px;
 }
 
 .header-left-buttons {
   display: flex;
-  margin-top: 15px;
 }
 
 .header-left-buttons h2{
   margin-left: 20px;
   font-weight: lighter;
   font-size: 20px;
+}
+
+/* Elements below header but still in first section */
+.hero-main-meat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.subtitle {
+  font-weight: lighter;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.subtitle-below {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 0.97;
+}
+
+.hero-main-meat-description {
+    display: flex;
+    font-size: 25px;
+    font-weight: lighter;
+    border: 1px solid black;
+    width: 550px;
+    /* justify-content: center; */
+    /* align-content: center; */
 }
