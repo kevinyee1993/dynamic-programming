@@ -26,6 +26,7 @@ function smallestDifference(a, b) {
   return smallestDiff;
 }
 
+// time: O(nlog(n))
 function quickSort(arr) {
   if(arr.length <= 1) {
     return arr;
