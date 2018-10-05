@@ -19,6 +19,18 @@ function isUnique(str) {
 
 
 // without using additional data structure
+// O(1) space
+// O(n^2) time
 function isUnique2(str) {
-  
+  for(let i = 0; i < str.length; i++) {
+    for(let j = i + 1; j < str.length; j++) {
+      if(str[i] === str[j]) {
+        return false;
+      }
+    }
+  }
+
+  return true;
 }
+
+console.log(isUnique2("fod"));
