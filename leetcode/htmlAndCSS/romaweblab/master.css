@@ -1,0 +1,30 @@
+.scroll-text {
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid black;
+}
+
+.absolute-bar {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  border: 1px solid red;
+}
+
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 50px;
+  position: absolute;
+  top: 35vh;
+  /* margin-top: 50vh; */
+}
+
+.entry {
+  height: 30px;
+  width: 30px;
+  margin: 10px;
+  background-color: lightblue;
+}
