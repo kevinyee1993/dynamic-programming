@@ -18,25 +18,25 @@ function modBinarySearch(nums, target, leftBound, rightBound) {
         return -1;
     }
 
-    if(target < mid && nums[leftBound] < target && nums[rightBound < target]) {
-      return modBinarySearch(nums, target, leftBound, midPoint - 1);
-    }
-
-    if(target < mid && nums[leftBound] > target && nums[rightBound] > target) {
-      return modBinarySearch(nums, target, leftBound, midPoint - 1);
-    }
-
-    if(target > mid && nums[leftBound] < target && nums[rightBound] < target) {
-      return modBinarySearch(nums, target, midPoint + 1, rightBound);
-    }
-
-    if(target > mid && nums[leftBound] > target && nums[rightBound] > target) {
-      return modBinarySearch(nums, target, midPoint + 1, rightBound);
-    }
-
-    if(target < mid && nums[leftBound] > target) {
-        return modBinarySearch(nums, target, midPoint + 1, rightBound);
-    }
+    // if(target < mid && nums[leftBound] < target && nums[rightBound] < target) {
+    //   return modBinarySearch(nums, target, leftBound, midPoint - 1);
+    // }
+    //
+    // if(target < mid && nums[leftBound] > target && nums[rightBound] > target) {
+    //   return modBinarySearch(nums, target, leftBound, midPoint - 1);
+    // }
+    //
+    // if(target > mid && nums[leftBound] < target && nums[rightBound] < target) {
+    //   return modBinarySearch(nums, target, midPoint + 1, rightBound);
+    // }
+    //
+    // if(target > mid && nums[leftBound] > target && nums[rightBound] > target) {
+    //   return modBinarySearch(nums, target, midPoint + 1, rightBound);
+    // }
+    //
+    // if(target < mid && nums[leftBound] > target) {
+    //     return modBinarySearch(nums, target, midPoint + 1, rightBound);
+    // }
 
     if(target < mid && nums[leftBound] <= target) {
         return modBinarySearch(nums, target, leftBound, midPoint - 1);
