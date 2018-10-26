@@ -8,11 +8,23 @@
   <body>
     <button type="button" name="button">Create modal</button>
 
-    <div class="modal-backdrop">
+    <div class="modal-backdrop" id="fart">
       <div class="modal">
         <p>hello</p>
+        <button onClick="createP()">button</button>
       </div>
     </div>
+
+    <script type="text/javascript">
+      function createP() {
+        const poo = document.querySelector("#fart");
+        const text = document.createElement("p");
+        const textNode = document.createTextNode("farts!");
+        text.append(textNode);
+
+        poo.append(text);
+      }
+    </script>
 
   </body>
 </html>
