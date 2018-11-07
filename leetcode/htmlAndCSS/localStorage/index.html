@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./main.css">
+  </head>
+  <body>
+    <div class="">
+      <header>
+        LOCAL TAPAS
+      </header>
+
+      <ul class="items-list">
+        <li>Loading...</li>
+      </ul>
+
+      <form class="main-form" action="index.html" method="post">
+        <input type="text" name="item" value="">
+        <button type="submit" name="button">+ Add Item</button>
+      </form>
+    </div>
+
+
+
+    <script type="text/javascript">
+      const form = document.querySelector(".main-form");
+      const itemsList = document.querySelector(".items-list");
+      const items = [];
+
+      function addItem(e) {
+        e.preventDefault();
+
+        const text = (this.querySelector('[name=item]')).value;
+        const item = {
+          text,
+          done: false
+        };
+
+        items.push(item);
+        populateList(items, itemsList);
+        this.reset();
+      }
+
+      function populateList(plates = [], plateList) {
+        plateList.innerHTML = plates.map((plate, i) => {
+          return `
+            <li>
+                <input type="checkbox" data-index=${i} id="items${i}"  ${plate.done ? 'checked' : ''}></input>
+                <label for="items${i}">${plate.text}</label>
+            </li>
+          `;
+        }).join('');
+      }
+
+      form.addEventListener('submit', addItem);
+
+    </script>
+  </body>
+</html>
