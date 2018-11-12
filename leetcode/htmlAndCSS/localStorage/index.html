@@ -11,6 +11,14 @@
         LOCAL TAPAS
       </header>
 
+      <div>
+        <ul class="farties">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+
       <ul class="items-list">
         <li>Loading...</li>
       </ul>
@@ -32,6 +40,17 @@
       const items = JSON.parse(localStorage.getItem('items')) || [];
       const allCheck = document.querySelector(".allcheck");
       const allClear = document.querySelector(".allclear");
+
+      const farties = document.querySelector(".farties");
+      // farties.forEach(li => {
+      //   li.addEventListener("click", butts);
+      // })
+
+
+      farties.addEventListener("click", butts);
+      function butts() {
+        console.log("hello");
+      }
 
       allCheck.addEventListener("click", checkAll);
       allClear.addEventListener("click", clearAll);
