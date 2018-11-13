@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./main.css">
+  </head>
+  <body>
+    <div class="hero">
+      <h1>WOAH</h1>
+    </div>
+
+    <script type="text/javascript">
+      const hero = document.querySelector(".hero");
+      const text = hero.querySelector("h1");
+      const walk = 100; // 100px;
+
+      function shadow(e) {
+        const width = hero.offsetWidth;
+        const height = hero.offsetHeight;
+        let x = e.offsetX;
+        let y = e.offsetY;
+
+        // this === the thing you listened on aka the currentTarget
+        // e.target === the thing that triggered the event
+        if(this !== e.target) {
+          x = x + e.target.offsetLeft;
+          y = y + e.target.offsetTop;
+        }
+
+        const xWalk = Math.round((x / width * walk) - (walk / 2));
+        const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+        text.style.textShadow = `${xWalk}px ${yWalk}px 0 red`;
+
+      }
+
+      hero.addEventListener('mousemove', shadow);
+    </script>
+  </body>
+</html>
