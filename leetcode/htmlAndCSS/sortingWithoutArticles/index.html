@@ -45,34 +45,27 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
-const bandHash = {};
+function strip(bandName) {
+  //^ means starts with when not in brackets
+  // [^] means not the following expressions
+  return bandName.replace(/^the |a |an /i, "");
+}
 
-bands.forEach(band => {
-  let bandName = removeArticles(band);
-  bandHash[bandName] = band;
-});
-
-const updatedBandNames = Object.keys(bandHash).sort();
-
-const bandsList = document.querySelector("#bands");
-
-updatedBandNames.map(band => {
-  let li = document.createElement("li");
-  li.innerHTML = bandHash[band];
-  bandsList.appendChild(li);
+bands.sort( (a,b) => {
+  if(strip(a) > strip(b)) {
+    return 1;
+  } else {
+    return -1;
+  }
 })
 
-function removeArticles(title) {
-  if(title.slice(0,4) === 'The ') {
-    return title.slice(4, title.length);
-  } else if(title.slice(0,2) === 'A ') {
-    return title.slice(2, title.length);
-  } else if(title.slice(0,3) === 'An ') {
-    return title.slice(3, title.length);
-  } else {
-    return title;
-  }
-}
+const bandList = document.querySelector("#bands");
+bandList.innerHTML = bands.map(band => {
+  return `<li>${ band }</li>`
+}).join("");
+
+console.log(bands);
+
 
 </script>
 
