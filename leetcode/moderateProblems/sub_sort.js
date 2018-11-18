@@ -50,13 +50,7 @@ console.log(subSort([2, -8, 3, -2, 4, -10]));
     <title>Warehouse</title>
     <style>
       /* Write your CSS solution here */
-      li:nth-of-type(1) {
-        font-weight: bold;
-      }
 
-      li:nth-of-type(2) {
-        font-style: italics;
-      }
     </style>
   </head>
   <body>
