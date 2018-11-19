@@ -12,8 +12,8 @@
       <header>
         <h1 class="logo">pixelicons</h1>
         <div class="header-left-buttons">
-          <h2>View Icons</h2>
-          <h2>Buy now</h2>
+          <h2 id="test">View Icons</h2>
+          <h2 id="test">Buy now</h2>
         </div>
       </header>
 
@@ -30,6 +30,38 @@
         <p class="scroll-btn-directions">scroll me</p>
       </section>
     </div>
+
+    <script type="text/javascript">
+
+      function myQuerySelectorAll(target) {
+        const body = document.body;
+        const queue = [body];
+        const selection = [];
+        let selector;
+
+        if(target[0] === '.' || target[0] === '#') {
+            selector = target[0];
+            target = target.slice(1, target.length);
+        }
+
+        while(queue.length > 0) {
+          let currNode = queue.shift();
+          let children = [...currNode.children];
+          queue.push(...children);
+          // console.log(currNode.tagName);
+          if(!selector && currNode.tagName.toLowerCase() === target.toLowerCase()) {
+            selection.push(currNode);
+          } else if(selector === '.' && currNode.className === target) {
+            selection.push(currNode);
+          } else if(selector === '#' && currNode.id) {
+            selection.push(currNode);
+          }
+        }
+
+        return selection;
+      }
+
+    </script>
 
 
   </body>
