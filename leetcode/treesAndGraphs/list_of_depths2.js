@@ -29,6 +29,8 @@ class TreeNode {
   }
 }
 
+
+// O(n) space and time
 function listOfDepths(root) {
   const treeDepth = findDepth(root);
   const listArr = [];
@@ -43,6 +45,8 @@ function listOfDepths(root) {
   return listArr;
 }
 
+// O(n) time where n is the number of nodes in the tere
+// O(1) space because using already existing listArr?
 function addNodeToList(listArr, node, currDepth = 0) {
   if(!node) {
     return;
