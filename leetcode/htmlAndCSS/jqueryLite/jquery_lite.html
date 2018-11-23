@@ -15,6 +15,12 @@
           <li>name</li>
           <li>Jeff</li>
         </ul>
+
+        <ul>
+          <li>butt</li>
+          <li>butt</li>
+          <li>butt</li>
+        </ul>
       </div>
     </div>
 
@@ -30,11 +36,25 @@
         constructor(arr) {
           this.collection = arr;
         }
+
+        html(string) {
+          this.collection.forEach(el => {
+            el.innerHTML = string;
+          })
+        }
+
+        empty() {
+          this.collection.forEach(el => {
+            el.innerHTML = "";
+          })
+        }
       }
-      
+
       function selector(target) {
-        return [...document.querySelectorAll(target)];
+        let nodes = [...document.querySelectorAll(target)];
+        return new DOMNodeCollection(nodes);
       }
+
 
     </script>
   </body>
