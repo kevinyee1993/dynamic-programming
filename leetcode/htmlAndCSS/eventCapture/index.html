@@ -6,13 +6,17 @@
 </head>
 <body class="bod">
 
-  <div class="one">
-    <div class="two">
-      <div class="three">
+
+    <div class="one">
+      <div class="two">
+        <div class="three">
+        </div>
       </div>
     </div>
-  </div>
 
+  <span class="test">
+    fartf
+  </span>
 <style>
   html {
     box-sizing: border-box;
@@ -43,12 +47,18 @@
     <!-- console.log(this.classList.value); -->
     <!-- console.log(e.target.classList.value); -->
     <!-- if(e.target.classList.value === this.classList.value) { -->
+      // e.stopPropagation();
+      console.log(e.currentTarget);
       console.log(this.classList.value);
     <!-- } -->
   }
   const divs = document.querySelectorAll('div');
+  const span = document.querySelector('span');
+  span.addEventListener('click', () => {
+    console.log("test");
+  })
   divs.forEach(div => {
-    div.addEventListener("click", logText, {capture: false, once: true});
+    div.addEventListener("click", logText, {capture: false, once: false});
   })
 </script>
 </body>
