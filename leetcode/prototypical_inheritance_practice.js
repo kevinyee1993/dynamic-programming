@@ -61,8 +61,11 @@ function butt() {
 
 butt.prototype = Object.create(test.prototype);
 butt.prototype.constructor = butt;
+test.prototype.newOne = "hello i am new one!";
+
 
 let a = new butt();
 console.log(a.fart);
 console.log(a.bark);
 console.log(butt.prototype.constructor);
+console.log(a.newOne);
