@@ -4,7 +4,7 @@ req.open('GET', 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb2
 
 req.onload = function() {
   if(this.status === 200) {
-    console.log("gotem coach");
+    console.log(this.responseText);
   }
 };
 
