@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <table>
+      <tr>
+        <th>One</th>
+        <th>two</th>
+        <th>three</th>
+      </tr>
+
+      <tr>
+        <td> a </td>
+        <td> b </td>
+        <td> c </td>
+      </tr>
+    </table>
+
+    <script type="text/javascript">
+      function print() {
+        console.log("hello");
+      }
+      let table = document.querySelector("table");
+      table.addEventListener("scroll", print);
+
+      table.removeEventListener("click", print)
+    </script>
+  </body>
+</html>

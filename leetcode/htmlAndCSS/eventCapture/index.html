@@ -42,24 +42,41 @@
 
 <button></button>
 <script>
-  function logText(e) {
-    <!-- e.stopPropagation(); -->
-    <!-- console.log(this.classList.value); -->
-    <!-- console.log(e.target.classList.value); -->
-    <!-- if(e.target.classList.value === this.classList.value) { -->
-      // e.stopPropagation();
-      console.log(e.currentTarget);
-      console.log(this.classList.value);
-    <!-- } -->
+
+  function print(e) {
+    // console.log(e.target.className);
+    // e.stopPropagation();
+    // console.log(this.className);
+    // console.log(e.target);
+    e.stopPropagation();
+
+    if(e.target.className === "three") {
+      console.log("hello");
+    }
   }
+
   const divs = document.querySelectorAll('div');
-  const span = document.querySelector('span');
-  span.addEventListener('click', () => {
-    console.log("test");
-  })
   divs.forEach(div => {
-    div.addEventListener("click", logText, {capture: false, once: false});
+    div.addEventListener("click", print);
   })
+  // function logText(e) {
+  //   <!-- e.stopPropagation(); -->
+  //   <!-- console.log(this.classList.value); -->
+  //   <!-- console.log(e.target.classList.value); -->
+  //   <!-- if(e.target.classList.value === this.classList.value) { -->
+  //     // e.stopPropagation();
+  //     console.log(e.currentTarget);
+  //     console.log(this.classList.value);
+  //   <!-- } -->
+  // }
+  // const divs = document.querySelectorAll('div');
+  // const span = document.querySelector('span');
+  // span.addEventListener('click', () => {
+  //   console.log("test");
+  // })
+  // divs.forEach(div => {
+  //   div.addEventListener("click", logText, {capture: false, once: false});
+  // })
 </script>
 </body>
 </html>

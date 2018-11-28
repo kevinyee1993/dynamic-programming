@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>!!!</title>
+  </head>
+  <body>
+    <form class="" action="index.html" method="get">
+      <input type="checkbox" name="" value="Ass">Ass</input>
+      <br>
+      <input type="checkbox" name="" value="donkey">donkey</input>
+      <br>
+      <input type="checkbox" name="" value="gunkis">gunkis</input>
+      <br>
+      <input type="checkbox" name="" value="butts">butts</input>
+      <br>
+      <input type="checkbox" name="" value="check">check all</input>
+      <br>
+    </form>
+
+    <script type="text/javascript">
+      const checkBoxes = document.querySelectorAll("input");
+      const lastCheck = checkBoxes[checkBoxes.length - 1];
+
+      lastCheck.addEventListener("click", () => checkAll(lastCheck.checked));
+
+      for(let i = 0; i < checkBoxes.length - 1; i++) {
+        checkBoxes[i].addEventListener("click", () => updateLastChecked());
+      }
+
+      function checkAll(checked) {
+          for(let i = 0; i < checkBoxes.length; i++) {
+            checkBoxes[i].checked = checked;
+          }
+      }
+
+      function updateLastChecked() {
+        let foundFalse = false;
+        for(let i = 0; i < checkBoxes.length - 1; i++) {
+          if(!checkBoxes[i].checked) {
+            foundFalse = true;
+            break;
+          }
+        }
+
+        lastCheck.checked = !foundFalse;
+      }
+
+
+    </script>
+  </body>
+</html>
