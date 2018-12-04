@@ -82,3 +82,5 @@ function helper(piles, alexScore, leeScore, isAlexTurn) {
                 return helper(pileState1, alexScore, leeScore + firstStone, true) || helper(pileState2, alexScore, leeScore + lastStone, true);
     }
 }
+
+console.log(stoneGame([2,100,3,5]));
