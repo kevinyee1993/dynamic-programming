@@ -1,65 +1,39 @@
-function quickSort(arr) {
-  helper(arr, 0, arr.length - 1);
+function quickSort(array) {
+  helper(array, 0, array.length - 1);
 }
 
-function helper(arr, start, end) {
+function helper(array, start, end) {
   if(start >= end) {
-    return arr;
+    return array;
   }
 
-  let pivot = arr[end];
-  let partitionIdx = partition(arr, start, end, pivot);
+  const pivot = array[end];
+  const partitionIndex = partition(array, start, end, pivot);
 
-  helper(arr, start, partitionIdx - 1);
-  helper(arr, partitionIdx + 1, end);
+  helper(array, start, partitionIndex - 1);
+  helper(array, partitionIndex + 1, end);
 }
 
-
-function partition(arr, start, end, pivot) {
-  let partitionIdx = start;
+function partition(array, start, end, pivot) {
+  let partitionIndex = start;
 
   for(let i = start; i < end; i++) {
-    if(arr[i] <= pivot) {
-      swap(arr, i, partitionIdx);
-      partitionIdx++;
+    if(array[i] < pivot) {
+      swap(array, i, partitionIndex);
+      partitionIndex++;
     }
   }
 
-  swap(arr, partitionIdx, end);
+  swap(array, partitionIndex, end);
 
-  return partitionIdx;
+  return partitionIndex;
 }
 
-function swap(arr, idx1, idx2) {
-  let temp = arr[idx1];
-  arr[idx1] = arr[idx2];
-  arr[idx2] = temp;
+function swap(array, idx1, idx2) {
+  let temp = array[idx1];
+  array[idx1] = array[idx2];
+  array[idx2] = temp;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
