@@ -8,34 +8,37 @@
   </head>
 
   <body>
-    <div v-if="test" id="app">
-      {{ message }}
+    <div id="app">
+      <button v-on:click="show = !show">
+        Toggle
+      </button>
 
-      <ul>
-        <li v-for="element in elements">
-          {{ element }}
-        </li>
-      </ul>
-    </div>
+      <transition name="fade">
+        <p v-if="show">hello</p>
+      </transition>
 
-    <div class="poo">
-      click me
+      <div id="farts">
+        {{ show }}
+        {{ test }}
+      </div>
     </div>
 
     <script type="text/javascript">
       var app = new Vue({
         el: '#app',
         data: {
-          message: 'Hello Vue!',
-          test: true,
-          elements: [1,2,3,4,5]
+          show: true,
+          test: 'test'
         }
       })
 
-      const poo = document.querySelector(".poo");
-      poo.addEventListener("click", () => {
-        app.message = 'new message';
-      })
+      var app2 = new Vue({
+        el: '#farts',
+        data: {
+          show: "hello",
+          farts: 'farts'
+        }
+      });
     </script>
   </body>
 </html>
