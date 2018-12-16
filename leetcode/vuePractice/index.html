@@ -7,18 +7,26 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
 
-  <!-- v-else HAS TO follow v-if or else you'd get error -->
   <body>
-    <div id="app">
-      <p v-if="show">hello</p>
+    <div id="butt">
+      <!-- use camelcase (backgroundColor) NOT snack case-->
+      <div class="box" v-bind:style="{backgroundColor: color}">
+      </div>
+
+      <button v-for="button in buttons"
+      <!-- oh... don't need to interpolate button can just use -->
+      <!-- might need to figure out how to escape e.g. if you want the
+    value to actually be "button" instead of the value of button -->
+      v-on:click="color = button">{{ button }}</button>
     </div>
 
 
     <script type="text/javascript">
-      var app = new Vue({
-        el: "#app",
+      const app = new Vue({
+        el: "#butt",
         data: {
-          show: true
+          color: "white",
+          buttons: ['blue', 'yellow', 'green', 'red']
         }
       })
 

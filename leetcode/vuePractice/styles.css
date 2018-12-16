@@ -13,3 +13,9 @@
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+.box {
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+}
