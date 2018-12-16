@@ -7,38 +7,21 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
 
+  <!-- v-else HAS TO follow v-if or else you'd get error -->
   <body>
     <div id="app">
-      <button v-on:click="show = !show">
-        Toggle
-      </button>
-
-      <transition name="fade">
-        <p v-if="show">hello</p>
-      </transition>
-
-      <div id="farts">
-        {{ show }}
-        {{ test }}
-      </div>
+      <p v-if="show">hello</p>
     </div>
+
 
     <script type="text/javascript">
       var app = new Vue({
-        el: '#app',
+        el: "#app",
         data: {
-          show: true,
-          test: 'test'
+          show: true
         }
       })
 
-      var app2 = new Vue({
-        el: '#farts',
-        data: {
-          show: "hello",
-          farts: 'farts'
-        }
-      });
     </script>
   </body>
 </html>
