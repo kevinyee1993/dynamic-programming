@@ -8,28 +8,28 @@
   </head>
 
   <body>
-    <div id="butt">
-      <!-- use camelcase (backgroundColor) NOT snack case-->
-      <div class="box" v-bind:style="{backgroundColor: color}">
-      </div>
-
-      <button v-for="button in buttons"
-      <!-- oh... don't need to interpolate button can just use -->
-      <!-- might need to figure out how to escape e.g. if you want the
-    value to actually be "button" instead of the value of button -->
-      v-on:click="color = button">{{ button }}</button>
+    <div id="app">
+      <test1 prop1="farts"></test1>
+      <test1 prop1="butts"></test1>
+      <test1 prop1="poops"></test1>
     </div>
 
-
     <script type="text/javascript">
-      const app = new Vue({
-        el: "#butt",
-        data: {
-          color: "white",
-          buttons: ['blue', 'yellow', 'green', 'red']
+      Vue.component('test1', {
+          data: function() {
+            return {
+              count: 0,
+              butts: 100
+            }
+          },
+          props: ['prop1'],
+          template: '<div><button v-on:click="count++">{{prop1}}</button> <p>{{butts}}</p></div>'
         }
-      })
+      );
 
+      const app = new Vue({
+        el: "#app"
+      })
     </script>
   </body>
 </html>

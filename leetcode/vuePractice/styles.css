@@ -3,7 +3,10 @@
 }
 
 .test2 {
-  background-color: pink;
+  /* background-color: pink; */
+border: 2px solid green;
+height: 50px;
+width: 50px;
 }
 
 .fade-enter-active, .fade-leave-active {
