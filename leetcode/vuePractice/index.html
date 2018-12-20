@@ -9,11 +9,12 @@
 
   <body>
     <div id="app">
-      <p>VueJS is pretty cool - {{name}} {{age}}</p>
-      <p>{{ multiplyAge(3) }}</p>
-      <p>{{ randomNumber() }}</p>
-      <img v-bind:src="puppy">
-      <input type="text" name="" v-bind:value="name">
+      <button type="button" name="button" v-on:click="alert">Show Alert</button>
+
+      <div class="box">
+        <input type="text" v-on:keydown.enter="value = $event.target.value">
+        {{ value }}
+      </div>
 
     </div>
 
@@ -21,19 +22,40 @@
       const app = new Vue({
         el: '#app',
         data: {
-          name: 'kelving',
-          age: 69,
-          puppy: 'https://cdn1-www.dogtime.com/assets/uploads/2010/12/puppies.jpg'
+          value: null
         },
         methods: {
-          multiplyAge: function(num) {
-            return this.age * num;
+          alert: function() {
+              alert("hello!")
           },
-          randomNumber: function() {
-            return Math.floor(Math.random() * 100);
+          updateValue: function(e) {
+            this.value = e.target.value;
           }
         }
-      })
+      });
     </script>
   </body>
 </html>
+
+<!--
+when want to pass in args to something you want to also use the event of, pass
+in whatever args you want and then pass in $event too to get access to events
+
+even more general, just whenever you wanna access the default JS event object, just use $event
+v-on:keydown.enter="value = $event.target.value"
+
+another note on this is that you dont always have to pass in a function to have
+these event listeners work, you can just do the code within the quotes like that
+note that when in the html, don't have to say this.value just need to say value
+whereas in the vue object, you use this when the data spans across data and method objects yadadamean
+
+there are event modifiers to stuff like v-on:whatever
+just add a dot modifier to it and you can do stuff like
+v-on:mousemove.stop which stops propagation
+v-on:click:prevent which prevents default
+
+there is an event modifier for keyup and i assume keydown too where you do something
+like this:
+v-on:keyup.enter where the modifier is the name of the key youre listening to
+can chain as well like v-on:keyup.enter.a.shift
+-->

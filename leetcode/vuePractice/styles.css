@@ -18,7 +18,10 @@ width: 50px;
 }
 
 .box {
-  border: 1px solid black;
-  height: 50px;
-  width: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.box input {
+  width: 20%;
 }
