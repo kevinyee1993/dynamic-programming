@@ -9,12 +9,16 @@
 
   <body>
     <div id="app">
-      <button type="button" name="button" v-on:click="alert">Show Alert</button>
+      <button type="button" v-on:click="counter++">Increase</button>
+      <button type="button" v-on:click="counter--">Decrease</button>
+      <button type="button" v-on:click="counter2++">Increase2</button>
+      {{ counter }}
+      {{ counter2 }}
 
-      <div class="box">
-        <input type="text" v-on:keydown.enter="value = $event.target.value">
-        {{ value }}
-      </div>
+      {{ farts }}
+      {{ farts2 }}
+
+
 
     </div>
 
@@ -22,15 +26,25 @@
       const app = new Vue({
         el: '#app',
         data: {
-          value: null
+          counter: 0,
+          counter2: 0
+        },
+        computed: {
+          printStatement: function() {
+            console.log('commputed');
+            this.counter2;
+            return this.counter > 5? 'Greater 5' : 'Less 5';
+          },
+          farts: function() {
+            console.log("hello");
+            return "hello";
+          },
+          farts2: function() {
+            console.log(this.counter2);
+            return "farts";
+          }
         },
         methods: {
-          alert: function() {
-              alert("hello!")
-          },
-          updateValue: function(e) {
-            this.value = e.target.value;
-          }
         }
       });
     </script>
@@ -58,4 +72,32 @@ there is an event modifier for keyup and i assume keydown too where you do somet
 like this:
 v-on:keyup.enter where the modifier is the name of the key youre listening to
 can chain as well like v-on:keyup.enter.a.shift
+
+v-model on an input does 2 way binding of the input and the value associated with it
+v-model="name" makes it so if you change name, you change the input and vice versa
+it's the same as if you did <input type="text" v-bind:value="name" v-on:input="name = $event.target.value" />
+
+for v-html you can't just pass in the html into the argument like
+v-html="<p>henlo</p>", looks like you can only pass it in as variable like
+v-html="html" where html is a data element with value of <p>henlo</p>
+
+computed options object
+can also add computed in addition to el, data, and methods
+when interpolating data that relies on logic, might make sense to create
+a method that returns a value and interpolate that in the dom using {{ method() }}
+the only problem with this is that whenever ANYTHING on the page re-renders,
+this method will be called even though whatever was changed may not be
+relevant to the method
+If the method takes a long time to run, this could negatively affect performance
+because you do one little thing and it calls this function needlessly
+This is where computed comes in.  Computed is used as a data when interpolating
+onto the DOM e.g. {{ computedMethod }} instead of {{ computedMethod() }}
+but when writing it out in the object, it still looks like a function.
+Computed functions are not always called indiscriminately when something on the
+page re-renders.  It is only called when relevant data is changed.  Relevant
+data is anything contained or referenced within the computed function.  This
+makes it so that when something unrelated rerenders, the computed function would
+only run if any of its relvant data is changed, otherwise it will return the
+cached previous result.  This saves a lot of time because it does not have
+to take time to call the function again but just return this value.
 -->
