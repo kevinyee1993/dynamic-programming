@@ -18,6 +18,9 @@
       {{ farts }}
       {{ farts2 }}
 
+      {{ printStatement }}
+
+      <button type="button" v-on:click="incrementCount(5)">button</button>
 
 
     </div>
@@ -27,7 +30,8 @@
         el: '#app',
         data: {
           counter: 0,
-          counter2: 0
+          counter2: 0,
+          html: '<p>https://google.com</p>'
         },
         computed: {
           printStatement: function() {
@@ -45,11 +49,31 @@
           }
         },
         methods: {
+          check: function() {
+            return 'Henlo';
+          },
+          incrementCount: function(num) {
+            this.counter += num;
+          },
+        },
+        watch: {
+          counter: function(value) {
+            console.log("watch");
+            return "hello";
+          }
         }
       });
     </script>
   </body>
 </html>
+<!-- Topics Learned
+
+$event
+event handler modifiers (v-on:click.stop or v-on:click.prevent)
+v-model (v-model='name')
+computed vs methods
+v-html
+ -->
 
 <!--
 when want to pass in args to something you want to also use the event of, pass
@@ -100,4 +124,29 @@ makes it so that when something unrelated rerenders, the computed function would
 only run if any of its relvant data is changed, otherwise it will return the
 cached previous result.  This saves a lot of time because it does not have
 to take time to call the function again but just return this value.
+
+watch is another property on the vue instance
+it is similar to computed in that it executes some function when a relevant
+data is updated but in general you just want to use computed
+you want to use watched for async or expensive functions - computed is normally
+something you want displayed immediately so you dont want to have it wait for
+anything when you use.
+computed: {
+  // value is something that is given which is the new changed value of
+  the data being watched for coming in
+  nameOfDataToWatchFor: function(value) {
+    //excute some async function here
+    // usually might want to create reference to this
+    const vm = this;
+
+    // async function here
+    setTimeout(function() {
+      vm.whatever = 0
+  }, 2000)
+  }
+
+  matter of fact you don't even have access to watch like that because it doesn't
+  have a unique name, only the name of a property.  So it strictly does a function
+  which you can't interpolate similarly to a method or a computed
+}
 -->
