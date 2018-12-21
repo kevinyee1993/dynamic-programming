@@ -9,18 +9,14 @@
 
   <body>
     <div id="app">
-      <button type="button" v-on:click="counter++">Increase</button>
-      <button type="button" v-on:click="counter--">Decrease</button>
-      <button type="button" v-on:click="counter2++">Increase2</button>
-      {{ counter }}
-      {{ counter2 }}
+      <p>Current value: {{ value }}</p>
 
-      {{ farts }}
-      {{ farts2 }}
+      <button type="button" name="button" @click="value += 5">Add 5</button>
+      <button type="button" name="button" @click="value++">Add 1</button>
+      <br>
 
-      {{ printStatement }}
-
-      <button type="button" v-on:click="incrementCount(5)">button</button>
+      <input type="text" v-model="duration" name="" value="">
+      {{ result }}
 
 
     </div>
@@ -29,37 +25,19 @@
       const app = new Vue({
         el: '#app',
         data: {
-          counter: 0,
-          counter2: 0,
-          html: '<p>https://google.com</p>'
+          value: 0,
+          duration: 1000
         },
         computed: {
-          printStatement: function() {
-            console.log('commputed');
-            this.counter2;
-            return this.counter > 5? 'Greater 5' : 'Less 5';
-          },
-          farts: function() {
-            console.log("hello");
-            return "hello";
-          },
-          farts2: function() {
-            console.log(this.counter2);
-            return "farts";
+          result: function() {
+            return this.value >= 37 ? 'Done' : 'Not there yet'
           }
         },
-        methods: {
-          check: function() {
-            return 'Henlo';
-          },
-          incrementCount: function(num) {
-            this.counter += num;
-          },
-        },
         watch: {
-          counter: function(value) {
-            console.log("watch");
-            return "hello";
+          result: function(value) {
+            setTimeout(() => {
+              this.value = 0;
+            }, this.duration);
           }
         }
       });
@@ -73,6 +51,9 @@ event handler modifiers (v-on:click.stop or v-on:click.prevent)
 v-model (v-model='name')
 computed vs methods
 v-html
+
+watch
+shorthand for event listener and v-bind
  -->
 
 <!--
@@ -147,6 +128,16 @@ computed: {
 
   matter of fact you don't even have access to watch like that because it doesn't
   have a unique name, only the name of a property.  So it strictly does a function
-  which you can't interpolate similarly to a method or a computed
+  which you can't interpolate similarly to a method or a computed.  watch methods wouldn't return anything it seems
+
+  shorthand for event listener:
+  v-on:click="" can be shortened to @click=""
+
+  shorthand for v-bind:attribute=""
+  :attribute=""
+
+  turns out you can watch a computed value just like it was a regular piece of data
+  but you can't just update it like computedValue = whatever regularly -> might
+  be a way by using setters but im not sure right now
 }
 -->
