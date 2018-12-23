@@ -9,35 +9,86 @@
 
   <body>
     <div id="app">
-      <p>Current value: {{ value }}</p>
+      <div>
+        <button type="button"
+        @click="startEffect"
+        :class="effectProperty">
+          Start Effect
+        </button>
 
-      <button type="button" name="button" @click="value += 5">Add 5</button>
-      <button type="button" name="button" @click="value++">Add 1</button>
-      <br>
+        <div id="effect"></div>
+      </div>
 
-      <input type="text" v-model="duration" name="" value="">
-      {{ result }}
+      <div :class="[{ box: boxOn }, { green: greenOn }]">I've got no class :)!!</div>
 
 
+      <div>
+        <input type="text" v-model="userSubmittedClass1">
+        <div :class="userSubmittedClass1"></div>
+      </div>
+
+      <div>
+        <input type="text" v-model="userSubmittedClass2">
+        <input type="text" v-model="userSubmittedBoolean">
+        <div :class="userSubmitted"></div>
+      </div>
+
+      <div>
+        <input type="text" v-model="colorStyleValue">
+        <input type="text" v-model="widthStyleValue">
+        <div class="box" :style="{ backgroundColor: colorStyleValue, width: widthStyleValue + 'px' }"></div>
+      </div>
+
+      <div>
+        <button type="button" @click="startProgress">Start Progress</button>
+        <p>Progress percent: {{ progressPercent }}%</p>
+        <div class="progress-bar" :style="{ width: (progressPercent * 3) + 'px' }"></div>
+      </div>
     </div>
 
     <script type="text/javascript">
       const app = new Vue({
         el: '#app',
         data: {
-          value: 0,
-          duration: 1000
+          highlightStatus: false,
+          shrinkStatus: false,
+          boxOn: true,
+          greenOn: true,
+          userSubmittedClass1: null,
+          userSubmittedClass2: null,
+          userSubmittedBoolean: false,
+          colorStyleValue: null,
+          widthStyleValue: null,
+          progressPercent: 0
         },
-        computed: {
-          result: function() {
-            return this.value >= 37 ? 'Done' : 'Not there yet'
+        methods: {
+          startEffect: function() {
+            this.highlightStatus = true;
+            setInterval( () => {
+              if(this.highlightStatus) {
+                this.highlightStatus = false;
+                this.shrinkStatus = true;
+              } else {
+                this.highlightStatus = true;
+                this.shrinkStatus = false;
+              }
+            }, 2000);
+          },
+          startProgress: function() {
+            setInterval(() => {
+              if(this.progressPercent < 100) {
+                this.progressPercent += 10;
+              }
+            },1000);
           }
         },
-        watch: {
-          result: function(value) {
-            setTimeout(() => {
-              this.value = 0;
-            }, this.duration);
+        computed: {
+          effectProperty: function() {
+            return { highlight: this.highlightStatus, shrink: this.shrinkStatus }
+          },
+          userSubmitted: function() {
+            let strToBool = this.userSubmittedBoolean === 'true' ? true : false;
+            return [this.userSubmittedClass2, { green: strToBool }];
           }
         }
       });
@@ -53,8 +104,24 @@ computed vs methods
 v-html
 
 watch
-shorthand for event listener and v-bind
+shorthand for event listener and v-bind (@ and :)
+
+binding data or computed properties to classes or styles
+
+
+
+v-binding with classes and passing in object
+:class="{ className: boolean }"
+i wonder if you could do multiple classes like this -> you could by doing this
+:class="{ className1: boolean, className2: boolean }"
+NOPE
+on html part, if you want to v-bind multiple classes you need to use array syntax
+:class="[{ className1: boolean }, { className2: boolean }, computedProperty]"
+
+don't have to do array syntax with styles though so you can do something like this
+:style="{ backgroundColor: colorStyleValue, width: widthStyleValue + 'px' }"
  -->
+
 
 <!--
 when want to pass in args to something you want to also use the event of, pass
@@ -136,8 +203,34 @@ computed: {
   shorthand for v-bind:attribute=""
   :attribute=""
 
+  all computed properties are functions that return something
+
   turns out you can watch a computed value just like it was a regular piece of data
   but you can't just update it like computedValue = whatever regularly -> might
   be a way by using setters but im not sure right now
+
+  for classes, can v-bind multiple classes with an array
+  :className="[{attr1: true}, {attr2: true}, {attr3: true}]"
+  or can combine with computed elements as well like
+  :className="[computedValue1, {attr2: true}, {attr3: true}]"
+
+  can also v-bind to style like this using objects
+  :style="{backgroundColor: dataName}"
+  note that youre not using css name background-color but using camelcase
+  can also combine too like v-binding class name either with objects or computed
+  property which returns an object in an array
+  :style="[{ backgroundColor: red }, computed1, { width: widthData }]"
+  if you're using a computed property to calculate more than one style, don't
+  do array representation, it should just look like an object with multiple key-value pairs like this:
+
+  myStyle: function() {
+    return { backgroundColor: this.color,
+    width: this.width + 'px'}
+  }
+
+  the array syntax is for when you're working on the html like
+  <div :style="computedProperty1, { backgroundColor: red }">
+
+
 }
 -->
