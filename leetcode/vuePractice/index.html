@@ -9,30 +9,36 @@
 
   <body>
     <div id="app">
-      <p v-if="showParagraph">I am true!</p>
-      <p v-else>I am false!</p>
 
-      <button type="button" @click="showParagraph = !showParagraph">Toggle</button>
+      <!-- Player Data -->
+      <div class="players">
+        <div class="name-and-health">
+          <h1>YOU</h1>
+          <div class="">healthbar</div>
+          {{ playerHealth }}
+        </div>
+        <div class="name-and-health">
+          <h1>MONSTER</h1>
+          <div class="">healthbar</div>
+          {{ monsterHealth }}
+        </div>
+      </div>
 
-      <ul>
-        <li v-for="(dog,index) in dogNames" :key="dog">{{ dog }}, {{ index }}</li>
-      </ul>
+      <!-- Action bar -->
+      <div class="action-bar">
+        <template v-if="startGame">
+          <div class="action-choices">
+              <button type="button" class="move attack" @click="action('attack')">Attack</button>
+              <button type="button" class="move special" @click="action('special')">Special Attack</button>
+              <button type="button" class="move heal" @click="action('heal')">Heal</button>
+              <button type="button" class="move" @click="action('giveUp')">Give Up</button>
+          </div>
+        </template>
+        <template v-else>
+          <button type="button" @click="startGame = true" class="start-game">Start New Game</button>
+        </template>
+      </div>
 
-      <ul>
-        <li v-for="(value, key, index) in movie">{{key}}: {{ value }} ({{index}})</li>
-      </ul>
-
-      <ul>
-        <li v-for="data in final">
-          <template v-if="data instanceof Array">
-            <ul>
-              <li v-for="el in data">{{ el }}</li>
-            </ul>
-          </template>
-
-          <p v-else>{{ data }}</p>
-        </li>
-      </ul>
     </div>
 
 
@@ -41,10 +47,36 @@
       const app = new Vue({
         el: '#app',
         data: {
-          showParagraph: true,
-          dogNames: ['kona', 'ponji', 'monkey', 'konebone'],
-          movie: { title: 'Lord of the Rings', author: 'J.R.R. Tolkien', books: 3 },
-          final: { name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21] }
+          startGame: true,
+          playerHealth: 100,
+          monsterHealth: 100
+        },
+        methods: {
+          action: function(type) {
+            let playerAction = Math.floor(Math.random() * 10) + 1;
+            let monsterAction = Math.floor(Math.random() * 10) + 1;
+
+            this.playerHealth -= monsterAction;
+
+            switch(type) {
+              case 'attack':
+                this.monsterHealth -= playerAction;
+                break;
+              case 'special':
+                this.monsterHealth -= playerAction * 2;
+                break;
+              case 'heal':
+                this.playerHealth += playerAction * 2;
+                break;
+              case 'giveUp':
+                this.playerHealth = 100;
+                this.monsterHealth = 100;
+                this.startGame = false;
+                break;
+              default:
+               return;
+            }
+          }
         }
       });
     </script>

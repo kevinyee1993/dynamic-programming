@@ -1,37 +1,54 @@
-#effect {
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
+body {
+  font-family: sans-serif;
 }
 
-.highlight {
-  background-color: red;
-  width: 200px;
+.players {
+  display: flex;
+  justify-content: space-around;
 }
 
-.shrink {
-  background-color: grey;
-  width: 50px;
+.name-and-health {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
-.box {
-  border: 1px solid black;
-  width: 200px;
-  height: 100px;
+.action-bar {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid lightgrey;
+  box-shadow: 2px 2px lightgrey;
 }
 
-.small-box {
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-}
-
-.green {
-  background-color: green;
-}
-
-.progress-bar {
-  height: 30px;
+.start-game {
   background-color: lightgreen;
+  height: 40px;
+  width: 200px;
+  margin: 30px;
+}
+
+.move {
+  height: 40px;
+  width: 100px;
+}
+
+.attack {
+  background-color: salmon;
+}
+
+.special {
+  background-color: orange;
+}
+
+.heal {
+  background-color: lightgreen;
+}
+
+.action-choices {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
   border: 1px solid black;
 }
