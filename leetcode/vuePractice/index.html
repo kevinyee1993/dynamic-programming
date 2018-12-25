@@ -9,87 +9,42 @@
 
   <body>
     <div id="app">
-      <div>
-        <button type="button"
-        @click="startEffect"
-        :class="effectProperty">
-          Start Effect
-        </button>
+      <p v-if="showParagraph">I am true!</p>
+      <p v-else>I am false!</p>
 
-        <div id="effect"></div>
-      </div>
+      <button type="button" @click="showParagraph = !showParagraph">Toggle</button>
 
-      <div :class="[{ box: boxOn }, { green: greenOn }]">I've got no class :)!!</div>
+      <ul>
+        <li v-for="(dog,index) in dogNames" :key="dog">{{ dog }}, {{ index }}</li>
+      </ul>
 
+      <ul>
+        <li v-for="(value, key, index) in movie">{{key}}: {{ value }} ({{index}})</li>
+      </ul>
 
-      <div>
-        <input type="text" v-model="userSubmittedClass1">
-        <div :class="userSubmittedClass1"></div>
-      </div>
+      <ul>
+        <li v-for="data in final">
+          <template v-if="data instanceof Array">
+            <ul>
+              <li v-for="el in data">{{ el }}</li>
+            </ul>
+          </template>
 
-      <div>
-        <input type="text" v-model="userSubmittedClass2">
-        <input type="text" v-model="userSubmittedBoolean">
-        <div :class="userSubmitted"></div>
-      </div>
-
-      <div>
-        <input type="text" v-model="colorStyleValue">
-        <input type="text" v-model="widthStyleValue">
-        <div class="box" :style="{ backgroundColor: colorStyleValue, width: widthStyleValue + 'px' }"></div>
-      </div>
-
-      <div>
-        <button type="button" @click="startProgress">Start Progress</button>
-        <p>Progress percent: {{ progressPercent }}%</p>
-        <div class="progress-bar" :style="{ width: (progressPercent * 3) + 'px' }"></div>
-      </div>
+          <p v-else>{{ data }}</p>
+        </li>
+      </ul>
     </div>
+
+
 
     <script type="text/javascript">
       const app = new Vue({
         el: '#app',
         data: {
-          highlightStatus: false,
-          shrinkStatus: false,
-          boxOn: true,
-          greenOn: true,
-          userSubmittedClass1: null,
-          userSubmittedClass2: null,
-          userSubmittedBoolean: false,
-          colorStyleValue: null,
-          widthStyleValue: null,
-          progressPercent: 0
-        },
-        methods: {
-          startEffect: function() {
-            this.highlightStatus = true;
-            setInterval( () => {
-              if(this.highlightStatus) {
-                this.highlightStatus = false;
-                this.shrinkStatus = true;
-              } else {
-                this.highlightStatus = true;
-                this.shrinkStatus = false;
-              }
-            }, 2000);
-          },
-          startProgress: function() {
-            setInterval(() => {
-              if(this.progressPercent < 100) {
-                this.progressPercent += 10;
-              }
-            },1000);
-          }
-        },
-        computed: {
-          effectProperty: function() {
-            return { highlight: this.highlightStatus, shrink: this.shrinkStatus }
-          },
-          userSubmitted: function() {
-            let strToBool = this.userSubmittedBoolean === 'true' ? true : false;
-            return [this.userSubmittedClass2, { green: strToBool }];
-          }
+          showParagraph: true,
+          dogNames: ['kona', 'ponji', 'monkey', 'konebone'],
+          movie: { title: 'Lord of the Rings', author: 'J.R.R. Tolkien', books: 3 },
+          final: { name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21] }
         }
       });
     </script>
@@ -108,6 +63,25 @@ shorthand for event listener and v-bind (@ and :)
 
 binding data or computed properties to classes or styles
 
+v-if, v-else, and v-else-if are exactly what you think theyre like
+v-show HIDES stuff it doesn't show whereas v-if REMOVES stuff it doesn't show on the DOM
+
+v-for and getting index out of it as well
+can use v-for to loop through an object and it'll get you the values
+
+v-for for loops -> v-for="(value, key, index) in object" or if you know
+you just want the value can just do
+v-for="value in object"
+
+looping through a list of numbers (1 to n) without having to create a new array or anything holding those numbers
+v-for="n in 10" -> displays numbers from 1-10
+
+when doing v-for, it helps with performance and avoiding bugs to v-bind
+the key to something so each created thing is unique, usually you would
+bind the key with whatever value is in the list if you know the list is
+filled with unique elements
+
+not vue but template tag is very useful for vue typed stuff
 
 
 v-binding with classes and passing in object
@@ -230,6 +204,57 @@ computed: {
 
   the array syntax is for when you're working on the html like
   <div :style="computedProperty1, { backgroundColor: red }">
+
+  v-if refers to everything nested inside that tag that has the v-if too
+  if v-if is false for that tag, everything nested inside of it won't show either
+
+  if you want to do a nesting type of thing without having it show on the DOM
+  aka you wanna show some elements that aren't all inside of a parent div class
+  for some reason, you can use the template tag
+  <template>
+    <h1>hello</h1>
+    <p>goodbye</p>
+  </template>
+
+  if you look at this in the DOM, you don't see the template parent but
+  just h1 and p tag by themselves
+
+  v-else only refers to the v-else that has to be one line above it
+
+  v-show HIDES stuff it doesn't show on DOM
+  v-if/else/else-if REMOVES it from the DOM
+
+  usually though you in most cases you just wanna use v-if because it's better performance wise
+  to have fewer elements on the page
+
+  can't combine v-show with a v-else/v-else-if afterwards
+
+  you can get index of each element when doing v-for by doing this:
+  <li v-for="(ingredient, i) in ingedients"></li>
+  rather than
+  <li v-for="ingredient in ingedients"></li>
+
+there's a way to use v-for for non nested elements like if you wanna loop
+through an array and do something like this
+<h1> {{ Ingredient }}</h1>
+<p> {{ index }}</p>
+
+you can add the v-for directive to the template tag and then nest the h1 and p inside that template tag
+
+the template tag won't show but the elements nested inside can use the
+variables created by the v-for
+
+when using v-for with an object, can do simply
+<div v-for="value in object">{{ value }}</div>   to display the value
+or if you wanna show the KEY and the value too, you can do
+<div v-for="(value, key) in object">{{ value }}, {{ key }}</div>
+NOTE that the order matters where the first is always the value and the
+second is always the key
+FINALLY you can also add a third argument which would show you the index
+of whatever part of the object you're on in the loop
+<div v-for="(value, key, index) in object">{{ value }}, {{ key }}, {{ index }}</div>
+
+
 
 
 }
