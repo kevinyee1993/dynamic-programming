@@ -14,13 +14,15 @@
       <div class="players">
         <div class="name-and-health">
           <h1>YOU</h1>
-          <div class="">healthbar</div>
-          {{ playerHealth }}
+          <div class="health-bar-back" :style="{ width: playerHealth * 2 + 'px'}">
+            {{ playerHealth }}
+          </div>
         </div>
         <div class="name-and-health">
           <h1>MONSTER</h1>
-          <div class="">healthbar</div>
-          {{ monsterHealth }}
+          <div class="health-bar-back" :style="{ width: monsterHealth * 2 + 'px'}">
+            {{ monsterHealth }}
+          </div>
         </div>
       </div>
 
@@ -31,7 +33,7 @@
               <button type="button" class="move attack" @click="action('attack')">Attack</button>
               <button type="button" class="move special" @click="action('special')">Special Attack</button>
               <button type="button" class="move heal" @click="action('heal')">Heal</button>
-              <button type="button" class="move" @click="action('giveUp')">Give Up</button>
+              <button type="button" class="move" @click="giveUp">Give Up</button>
           </div>
         </template>
         <template v-else>
@@ -41,7 +43,9 @@
 
       <div>
         <ul v-if="historyBar.length > 0">
-          <li v-for="action in historyBar">{{ action.message }}</li>
+          <li v-for="action in historyBar" :class="action.source" class="history-entry">
+            {{ action.message }}
+          </li>
         </ul>
       </div>
 
@@ -81,17 +85,33 @@
                 this.playerHealth += playerAction * 2;
                 playerHistory.message = "You healed for " + playerAction;
                 break;
-              case 'giveUp':
-                this.playerHealth = 100;
-                this.monsterHealth = 100;
-                this.startGame = false;
-                break;
               default:
                return;
             }
 
+
             this.historyBar.unshift(playerHistory);
             this.historyBar.unshift(monsterHistory);
+          },
+          giveUp: function() {
+            this.playerHealth = 100;
+            this.monsterHealth = 100;
+            this.startGame = false;
+            this.historyBar = [];
+          }
+        },
+        watch: {
+          playerHealth: function() {
+            if(this.playerHealth <= 0) {
+              alert("You lose!");
+              this.giveUp();
+            }
+          },
+          monsterHealth: function() {
+            if(this.monsterHealth <= 0) {
+              alert("You win!");
+              this.giveUp();
+            }
           }
         }
       });
