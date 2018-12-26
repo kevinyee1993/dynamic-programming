@@ -2,6 +2,10 @@ body {
   font-family: sans-serif;
 }
 
+ul {
+  list-style: none;
+}
+
 .players {
   display: flex;
   justify-content: space-around;

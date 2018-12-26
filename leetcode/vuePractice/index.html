@@ -39,6 +39,12 @@
         </template>
       </div>
 
+      <div>
+        <ul v-if="historyBar.length > 0">
+          <li v-for="action in historyBar">{{ action.message }}</li>
+        </ul>
+      </div>
+
     </div>
 
 
@@ -49,24 +55,31 @@
         data: {
           startGame: true,
           playerHealth: 100,
-          monsterHealth: 100
+          monsterHealth: 100,
+          historyBar: []
         },
         methods: {
           action: function(type) {
             let playerAction = Math.floor(Math.random() * 10) + 1;
             let monsterAction = Math.floor(Math.random() * 10) + 1;
 
+            let playerHistory = { source: 'player', message: null };
+            let monsterHistory = { source: 'monster', message: 'Monster attacked for ' + monsterAction };
+
             this.playerHealth -= monsterAction;
 
             switch(type) {
               case 'attack':
                 this.monsterHealth -= playerAction;
+                playerHistory.message = "You attacked for " + playerAction;
                 break;
               case 'special':
                 this.monsterHealth -= playerAction * 2;
+                playerHistory.message = "You special attacked for " + playerAction * 2;
                 break;
               case 'heal':
                 this.playerHealth += playerAction * 2;
+                playerHistory.message = "You healed for " + playerAction;
                 break;
               case 'giveUp':
                 this.playerHealth = 100;
@@ -76,6 +89,9 @@
               default:
                return;
             }
+
+            this.historyBar.unshift(playerHistory);
+            this.historyBar.unshift(monsterHistory);
           }
         }
       });
@@ -234,7 +250,7 @@ computed: {
     width: this.width + 'px'}
   }
 
-  the array syntax is for when you're working on the html like
+  the array syntax is for when you're  working on the html like
   <div :style="computedProperty1, { backgroundColor: red }">
 
   v-if refers to everything nested inside that tag that has the v-if too
