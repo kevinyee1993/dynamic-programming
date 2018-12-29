@@ -7,15 +7,119 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
+
     <div id="app">
+      {{ hello }}
     </div>
 
     <script type="text/javascript">
       const app = new Vue({
         el: '#app',
         data: {
+          hello: 'hello'
+        },
+        beforeCreate: function() {
+          console.log('beforeCreate');
+        },
+        created: function() {
+          console.log('created');
+        },
+        beforeMount: function() {
+          console.log('beforeMount');
+        },
+        mounted: function() {
+          console.log('mounted');
+        },
+        beforeUpdate: function() {
+          console.log('beforeUpdate');
+        },
+        updated: function() {
+          console.log('updated');
+        },
+        beforeDestroy: function() {
+          console.log('beforeDestroy');
+        },
+        destroyed: function() {
+          console.log('destroyed');
         }
-      });
+      })
+
     </script>
   </body>
 </html>
+
+<!--
+Multiple vue instances
+
+accessing and manipulating vue instances through variables
+
+proxying data when changing vue instance through stored variable
+
+adding ref key to html element like querySelector/not updating template
+
+accessing all refs with this.$refs then selecting specific ref
+
+$mount('cssSelector') working the same as el: 'cssSelector'
+
+template option in vue instance (just a string representing HTML)
+    template: '<h1>Hello</h1>'  -> no object or anything
+
+components -> will dive deeper into it later
+
+Vue has virtual DOM similar to React which makes updating a lot faster
+
+Vue lifecycle methods
+you add the hooks as part of the Vue options hash
+el: '#app',
+data: {
+  whatever: 'whatever'
+},
+beforeCreate: function() {  <-- add lifecycle method in like this
+  // whatever code here
+}
+note that they are always functions
+
+
+
+Can have multiple vue instances on same page
+can store each vue instance in a variable and then access that e.g.
+const app = new Vue({
+  el: '#app',
+  data: {
+    hello: 'hello'
+  }
+}
+})
+
+app.hello = "farts" changes the data hello, notice you don't have to say
+app.data.hello, can direclty use the name
+if you did wanna do it like that, you would use app.$data.hello, $data being
+the field of the Vue instance which holds all the data
+
+when using $mount('#app'), does same thing as el: '#app' just that you use
+it when a vue instance does not have that app option, and you do it after
+that vue instance is created.  just mounting the vue template onto an
+html element.  Useful for when you wanna set up a vue instance first but
+not sure where to mount it yet or if the html element doesn't exist yet
+
+will dive deeper into components but what ive seen so far, need to declare it
+like:
+Vue.component('componentName', {
+  options hash similar but not identical to vue instance's options hash
+})
+declare it outside of any vue instances just in the JS but above any vue instance
+that controls the html that you wanna put the component inside of
+then anywhere in html you can put <componentName></componentName> to show that
+component with predefined template
+can't put <componentName></componentName> in just the html, need to put it
+into an HTML element controlled by a vue instance
+
+Vue uses virtual DOM to keep track of updating/rerendering.  Vue instance
+creates a virtual DOM which it keeps track of and whenever something changes in
+the Vue instance, it changes it in the virtual DOM.  It then finds any
+differences between the Vue instance and the virtual DOM and those differences
+are the ones that get updated in the regular DOM.  Now the real DOM and virtual
+DOM would have the same representation without having to do anything else like
+copying over the real DOM over to the virtual DOM.  Makes updating very fast
+
+ -->
