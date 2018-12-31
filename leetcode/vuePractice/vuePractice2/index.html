@@ -9,39 +9,23 @@
   <body>
 
     <div id="app">
-      {{ hello }}
+      <my-cmp></my-cmp>
+      <my-cmp></my-cmp>
+      <my-cmp></my-cmp>
     </div>
 
     <script type="text/javascript">
+      Vue.component('my-cmp', {
+        data: function() {
+          return {
+            status: 0
+          }
+        },
+        template: '<div><p>{{ status }}</p> <button @click="status++"></button></div>'
+      })
+
       const app = new Vue({
-        el: '#app',
-        data: {
-          hello: 'hello'
-        },
-        beforeCreate: function() {
-          console.log('beforeCreate');
-        },
-        created: function() {
-          console.log('created');
-        },
-        beforeMount: function() {
-          console.log('beforeMount');
-        },
-        mounted: function() {
-          console.log('mounted');
-        },
-        beforeUpdate: function() {
-          console.log('beforeUpdate');
-        },
-        updated: function() {
-          console.log('updated');
-        },
-        beforeDestroy: function() {
-          console.log('beforeDestroy');
-        },
-        destroyed: function() {
-          console.log('destroyed');
-        }
+        el: '#app'
       })
 
     </script>
@@ -74,7 +58,7 @@ el: '#app',
 data: {
   whatever: 'whatever'
 },
-beforeCreate: function() {  <-- add lifecycle method in like this
+beforeCreate: function() {  <- add lifecycle method in like this
   // whatever code here
 }
 note that they are always functions
@@ -121,5 +105,34 @@ differences between the Vue instance and the virtual DOM and those differences
 are the ones that get updated in the regular DOM.  Now the real DOM and virtual
 DOM would have the same representation without having to do anything else like
 copying over the real DOM over to the virtual DOM.  Makes updating very fast
+
+Vue components do not use data object as property or else you'll get an error
+data: {
+  butt: 'butts'
+}
+will NOT work
+instead when you are working with components, want to turn it into a function
+that returns a new object holding the data
+data: function() {
+  return {
+    butt: 'butts'
+  };
+}
+
+the reason you do this is because each component will have their own fresh
+independent data copy so that they are not dependent on each other when you create
+multiple components of the same thing
+
+you can have different vue instances using the same tags for components but have
+each component do different things depending on what vue instance theyre called on
+can just create the component as an object and store it in a variable
+on the vue instance you create a components field
+components: {
+ 'name-of-component': componentObject
+}
+
+which lets you use that component name in that vue instance
+how you did it before was registering a component globally, doing this would be
+registering the components locally
 
  -->
