@@ -1,5 +1,8 @@
 <template>
-    <h1>hello worl</h1>
+  <div class="">
+      <results></results>
+      <counter></counter>
+  </div>
 </template>
 
 <script>
@@ -7,7 +10,8 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js Appz',
+      value: 0
     }
   }
 }
