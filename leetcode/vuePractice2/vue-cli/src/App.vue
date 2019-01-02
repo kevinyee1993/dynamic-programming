@@ -2,17 +2,17 @@
   <div class="">
       <results></results>
       <counter></counter>
+      <another-result></another-result>
   </div>
 </template>
 
 <script>
+import anotherResult from './vuexComponents/anotherResult';
+
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js Appz',
-      value: 0
-    }
+  components: {
+    anotherResult
   }
 }
 </script>
