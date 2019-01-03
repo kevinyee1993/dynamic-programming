@@ -15,6 +15,17 @@ export const store = new Vuex.Store({
   getters: {
     doubleValue: function(state) {
       return state.counter*2;
+    },
+    butts: function(state) {
+      return (state.counter * 3) + 'butts';
+    }
+  },
+  mutations: {
+    increment: function(state) {
+      state.counter++;
+    },
+    decrement: function(state) {
+      state.counter--;
     }
   }
 });
