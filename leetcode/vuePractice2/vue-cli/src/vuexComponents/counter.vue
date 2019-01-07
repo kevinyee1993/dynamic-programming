@@ -7,13 +7,13 @@
 </template>
 
 <script type="text/javascript">
-  import { mapMutations } from 'vuex';
+  import { mapActions } from 'vuex';
 
   export default {
     props: {
       value: Number
     },
-    methods: {...mapMutations([
+    methods: {...mapActions([
       'increment',
       'decrement'
     ]),

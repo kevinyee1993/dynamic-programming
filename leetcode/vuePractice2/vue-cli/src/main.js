@@ -10,13 +10,13 @@ import Results from './vuexComponents/results';
 import { store } from './store/store';
 
 
-Vue.component('header-page', HeaderPage);
-Vue.component('server-details', ServerDetails);
-Vue.component('server-manage', ServerManage);
-Vue.component('server-list', ServerList);
-
-Vue.component('counter', Counter);
-Vue.component('results', Results);
+// Vue.component('header-page', HeaderPage);
+// Vue.component('server-details', ServerDetails);
+// Vue.component('server-manage', ServerManage);
+// Vue.component('server-list', ServerList);
+//
+// Vue.component('counter', Counter);
+// Vue.component('results', Results);
 
 new Vue({
   el: '#app',

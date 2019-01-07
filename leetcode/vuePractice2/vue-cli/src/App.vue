@@ -1,18 +1,17 @@
 <template>
   <div class="">
-      <results></results>
-      <counter></counter>
-      <another-result></another-result>
+    <serverlist></serverlist>
   </div>
 </template>
 
 <script>
-import anotherResult from './vuexComponents/anotherResult';
+// import anotherResult from './vuexComponents/anotherResult';
+import serverlist from './vuexComponents/serverlist';
 
 export default {
   name: 'app',
   components: {
-    anotherResult
+    serverlist
   }
 }
 </script>
