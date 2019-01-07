@@ -1,17 +1,22 @@
 <template>
   <div class="">
-    <serverlist></serverlist>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 // import anotherResult from './vuexComponents/anotherResult';
-import serverlist from './vuexComponents/serverlist';
+import Component1 from './vueRouter/component1';
+import Component2 from './vueRouter/component2';
+import Component3 from './vueRouter/component3';
 
 export default {
   name: 'app',
   components: {
-    serverlist
+    Component1,
+    Component2,
+    Component3
+
   }
 }
 </script>
